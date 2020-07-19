@@ -1,0 +1,28 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: 0.75rem;
+  }
+  
+  .login,
+  .image {
+    min-height: 100vh;
+  }
+  
+  .bg-image {
+    background-image: url('../gestion_consultas/img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+  }
+  
+  
+  
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    border-radius: 2rem;
+    background-color: #7eb6c4;
+    border-color: #7eb6c4;
+  } 
+  
