@@ -23,7 +23,7 @@ $('#formLogin').submit(function(e){
                         title:'Usuario y/o password incorrecta',
                     });
                 } else{
-                    window.location.href = "vistas/menu_principal.php";
+                    window.location.href = "vistas/dashboard.php";
                 }
             }    
          });
