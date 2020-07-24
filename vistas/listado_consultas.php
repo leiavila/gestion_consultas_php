@@ -3,23 +3,21 @@
 
 <head>
 
-        <link rel="shortcut icon" href="#" />
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>UTN - Módulo gestión consultas</title>
+  <link rel="shortcut icon" href="#" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>UTN - Módulo gestión consultas</title>
 
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/vistas/listado_consultas.css">
-        <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">    
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vistas/listado_consultas.css">
+  <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> 
+  <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
 </head>
 
 <body>
@@ -28,19 +26,19 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
 
-     <!-- NavBar -->
-     <?php include("componentes/navbar.php") ?>
+    <!-- NavBar -->
+    <?php include("componentes/navbar.php") ?>
 
 
     <!-- Header -->
     <div class="header bg-primary pb-6">
       <div class="container-fluid">
         <div class="header-body">
-         
-            <div style="padding: 16px" class="col-lg-6 col-7">
-              <h2 class="text-white">Listado de consultas</h6>
-            </div>
-          
+
+          <div style="padding: 16px" class="col-lg-6 col-7">
+            <h2 class="text-white">Listado de consultas</h6>
+          </div>
+
         </div>
       </div>
     </div>
@@ -65,7 +63,7 @@
                     <th scope="col">Inicio - Fin</th>
                     <th scope="col">Alumno</th>
                     <th scope="col">Acción</th>
-                    <th scope="col"></th>
+                  
                   </tr>
                 </thead>
                 <tbody class="list">
@@ -75,72 +73,41 @@
                     <td> 19:10 - 20:00 </td>
                     <td> Avila Leilen </td>
                     <td>
-                        <button type="button" class="btn btn-success btn-sm" >s</button>
-                        <button type="button" class="btn btn-danger btn-sm">f</button>
+                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
+                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
                     </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
+                    
                   </tr>
                   <tr>
                     <td>Simulación
                     </td>
                     <td> 20/07/2020 </td>
                     <td>
-                     12:15 - 13:00
+                      12:15 - 13:00
                     </td>
                     <td>
-                        Avila Leilen
+                      Avila Leilen
                     </td>
-                    <td> acción </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
+                    <td> <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
+                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button> </td>
+                    
                   </tr>
                   <tr>
                     <td scope="row">Ingeniería de software
                     </td>
-                    <td >
-                        21/07/2020
+                    <td>
+                      21/07/2020
                     </td>
                     <td> 08:45 - 09:30 </td>
+
+                    <td>
+                      Avila Leilen
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
+                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
+                    </td>
                     
-                    <td>
-                        Avila Leilen 
-                    </td>
-                    <td>
-                     acción
-                    </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -149,23 +116,13 @@
                     <td>21/07/2020</td>
                     <td>12:40 - 13:00</td>
                     <td>
-                     Avila Leilen
+                      Avila Leilen
                     </td>
                     <td>
-                      acción
+                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
+                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
                     </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
+                   
                   </tr>
                   <tr>
                     <td>Redes</td>
@@ -176,23 +133,13 @@
                       14:00 - 15:00
                     </td>
                     <td>
-                    Avila Leilen
+                      Avila Leilen
                     </td>
                     <td>
-                    acción
+                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
+                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
                     </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
+                   
                   </tr>
                 </tbody>
               </table>
@@ -204,7 +151,7 @@
                   <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">
                       <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
+                      <span class="sr-only">previous</span>
                     </a>
                   </li>
                   <li class="page-item active">
@@ -217,7 +164,7 @@
                   <li class="page-item">
                     <a class="page-link" href="#">
                       <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
+                      <span class="sr-only">Siguiente</span>
                     </a>
                   </li>
                 </ul>
@@ -226,8 +173,7 @@
           </div>
         </div>
       </div>
-      <!-- Dark table -->
-     
+    
 
     </div>
   </div>

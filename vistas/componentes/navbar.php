@@ -7,7 +7,14 @@ if($_SESSION["s_usuario"] === null){
 
 ?>
 
-
+<!DOCTYPE html> 
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Gestor de consultas UTN</title>
+  <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
+</head>
 
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
       <div class="container-fluid">
@@ -34,7 +41,7 @@ if($_SESSION["s_usuario"] === null){
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="imagen_usuario" src="\gestion_consultas_php\img\user.png">
+                    <img alt="imagen_usuario" src="\gestion_consultas_php\img\img_logo.jpg">
                   </span>
                   <div> &nbsp;
                     <span><?php echo $_SESSION["s_usuario"];?></span>
@@ -53,3 +60,4 @@ if($_SESSION["s_usuario"] === null){
         </div>
       </div>
     </nav>
+</html>

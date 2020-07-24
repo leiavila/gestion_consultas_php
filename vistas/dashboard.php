@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
 
+  
+
   <!-- Argon CSS -->
   <!-- TODO ver esto si lo podemos sacar -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> 
 
 </head>
 

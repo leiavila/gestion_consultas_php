@@ -7,14 +7,11 @@
     <title> UTN - Bienvenido al gestor de consultas</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
-
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
 
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row no-gutter">
             <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
