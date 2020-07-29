@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if($_SESSION["s_usuario"] === null){
+if( $_SESSION["s_usuario"] === null){
     header("Location: ../index.php");
 }
 
@@ -13,7 +13,7 @@ if($_SESSION["s_usuario"] === null){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Gestor de consultas UTN</title>
-  <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
+  <link rel="stylesheet" href="..\..\estilos.css" type="text/css">
 </head>
 
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
@@ -41,7 +41,7 @@ if($_SESSION["s_usuario"] === null){
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="imagen_usuario" src="\gestion_consultas_php\img\img_logo.jpg">
+                    <img alt="imagen_usuario" src="..\..\img\img_logo.jpg">
                   </span>
                   <div> &nbsp;
                     <span><?php echo $_SESSION["s_usuario"];?></span>

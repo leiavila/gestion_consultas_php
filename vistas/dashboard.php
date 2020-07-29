@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -9,13 +7,13 @@
   <title>Gestor de consultas UTN</title>
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
+  <link rel="stylesheet" href="..\estilos.css" type="text/css">
 
-  
+
 
   <!-- Argon CSS -->
   <!-- TODO ver esto si lo podemos sacar -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> 
+  <link rel="stylesheet" href="..\assets\css\argon.css?v=1.2.0" type="text/css">
 
 </head>
 
@@ -25,6 +23,7 @@
 
   <!-- Sidenav -->
   <?php include("componentes/sidebar.php") ?>
+  <?php include("../bd/conexion.php") ?>
 
 
   <!-- Main content -->
@@ -152,61 +151,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      Entornos Gráficos
-                    </th>
-                    <td>
-                      20/07/2020
-                    </td>
-                    <td>
-                      19.15 - 20:00
-                    </td>
-                    <td>1</td>
-                  </tr>
+                  <?php
+                  $objeto = new Conexion();
+                  $conexion = $objeto->Conectar();
+                  $resultado = $conexion->prepare('SELECT * FROM proximas_consultas;');
+                  $resultado->execute();
+                  $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-                  <tr>
-                    <th scope="row">
-                      Algoritmos Genéticos
-                    </th>
-                    <td>
-                      20/07/2020
-                    </td>
-                    <td>
-                      20.15 - 21:00
-                    </td>
-                    <td>3</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      Algoritmos Genéticos
-                    </th>
-                    <td>
-                      21/07/2020
-                    </td>
-                    <td>
-                      20.15 - 21:00
-                    </td>
-                    <td>3</td>
-                  </tr>
-
-
-
-                  <tr>
-                    <th scope="row">
-                      Simulación
-                    </th>
-                    <td>
-                      22/07/2020
-                    </td>
-                    <td>
-                      11:15 - 12:00
-                    </td>
-                    <td>
-                      3
-                    </td>
-                  </tr>
+                  if ($resultado->rowCount() > 0) {
+                    foreach($data as $fila) {
+                      echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
+                      echo '<td>' . $fila["fecha"] . '</td>';
+                      echo '<td>' . $fila["hora_ini_fin"] . '</td>';
+                      echo '<td>' . $fila["cantidad_alumnos"] . '</td>';
+                    }
+                  } else {
+                    echo '<th colspan=4>No hay próximas consultas</th>';
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>

@@ -56,7 +56,7 @@ echo '<table>';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Gestor de consultas UTN</title>
-    <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
+    <link rel="stylesheet" href="..\estilos.css" type="text/css">
 </head>
 
 <body>

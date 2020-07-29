@@ -2,7 +2,6 @@ $('#formLogin').submit(function(e){
     e.preventDefault();
     var usuario = $.trim($("#usuario").val());    
     var password =$.trim($("#password").val());    
-     
     if(usuario.length == "" || password == ""){
        Swal.fire({
            type:'warning',
@@ -15,9 +14,8 @@ $('#formLogin').submit(function(e){
             type:"POST",
             datatype: "json",
             data: {usuario:usuario, password:password}, 
-            success:function(data){    
-                debugger;        
-                if(data.includes('null')){
+            success:function(data){
+                if(data.includes('false')){
                     Swal.fire({
                         type:'error',
                         title:'Usuario y/o password incorrecta',
