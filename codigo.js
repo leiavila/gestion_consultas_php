@@ -51,6 +51,7 @@ $('#formLogin').submit(function(e){
                     data: {fila:fila, accion:accion}, 
                     async: true,
                     success: function (data) {
+                        alert(data)
                         
                     }
                 });
