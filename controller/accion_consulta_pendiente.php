@@ -13,10 +13,7 @@ $accion = (isset($_POST['accion'])) ? $_POST['accion'] : '';
 $estado = $accion==1? 'Confirmado': 'Rechazado';
 $resultado = $conexion->prepare('UPDATE consultas c SET c.estado = ? WHERE c.idconsultas = ?');
 $retorno = $resultado->execute([$estado, $fila]);
-/* if ( $resultado->rowCount() == 1 ) {
-    $_SESSION["s_usuario"] = $data->usuario;
-}
- */
+
 print $retorno;
 $conexion=null;
 

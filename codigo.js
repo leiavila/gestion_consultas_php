@@ -45,6 +45,15 @@ $('#formLogin').submit(function(e){
                     title:'Error en la base de datos.',
                 });
             } else{
+                $.ajax({
+                    type: "POST",
+                    url: "../controller/enviar_mail.php",
+                    data: {fila:fila, accion:accion}, 
+                    async: true,
+                    success: function (data) {
+                        
+                    }
+                });
                 window.location.href = "listado_consultas.php";
             }
         }    
