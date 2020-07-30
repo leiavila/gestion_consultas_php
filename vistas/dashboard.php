@@ -160,10 +160,12 @@
 
                   if ($resultado->rowCount() > 0) {
                     foreach($data as $fila) {
+                      echo '<tr>';
                       echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
                       echo '<td>' . $fila["fecha"] . '</td>';
                       echo '<td>' . $fila["hora_ini_fin"] . '</td>';
                       echo '<td>' . $fila["cantidad_alumnos"] . '</td>';
+                      echo '</tr>';
                     }
                   } else {
                     echo '<th colspan=4>No hay próximas consultas</th>';

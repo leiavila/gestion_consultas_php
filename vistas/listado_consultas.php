@@ -23,6 +23,7 @@
 <body>
   <!-- Sidenav -->
   <?php include("componentes/sidebar.php") ?>
+  <?php include("../bd/conexion.php") ?>
   <!-- Main content -->
   <div class="main-content" id="panel">
 
@@ -67,80 +68,33 @@
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <tr>
-                    <td> Entornos Gráficos </th>
-                    <td> 19/07/2020 </td>
-                    <td> 19:10 - 20:00 </td>
-                    <td> Avila Leilen </td>
-                    <td>
-                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
-                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Simulación
-                    </td>
-                    <td> 20/07/2020 </td>
-                    <td>
-                      12:15 - 13:00
-                    </td>
-                    <td>
-                      Avila Leilen
-                    </td>
-                    <td> <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
-                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button> </td>
-                    
-                  </tr>
-                  <tr>
-                    <td scope="row">Ingeniería de software
-                    </td>
-                    <td>
-                      21/07/2020
-                    </td>
-                    <td> 08:45 - 09:30 </td>
+                <?php
+                  $objeto = new Conexion();
+                  $conexion = $objeto->Conectar();
+                  $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion;');
+                  $resultado->execute();
+                  $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-                    <td>
-                      Avila Leilen
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
-                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      Investigación operativa
-                    </td>
-                    <td>21/07/2020</td>
-                    <td>12:40 - 13:00</td>
-                    <td>
-                      Avila Leilen
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
-                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
-                    </td>
-                   
-                  </tr>
-                  <tr>
-                    <td>Redes</td>
-                    <td class="budget">
-                      30/07/2020
-                    </td>
-                    <td>
-                      14:00 - 15:00
-                    </td>
-                    <td>
-                      Avila Leilen
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success btn-sm">ACEPTAR</button>
-                      <button type="button" class="btn btn-danger btn-sm">CANCELAR</button>
-                    </td>
-                   
-                  </tr>
+                  if ($resultado->rowCount() > 0) {
+                    echo ' <form class="form" action="" id="accionBoton" method="POST">';
+                    foreach($data as $fila) {
+                      echo '<tr>';
+                        echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
+                        echo '<td>' . $fila["fecha"] . '</td>';
+                        echo '<td>' . $fila["hora_ini_fin"] . '</td>';
+                        echo '<td>' . $fila["nombre"] . '</td>';
+                        echo '
+                        <td>
+                            <input type="submit" id="aceptar' . $fila["id"] . '1" name="aceptar' . $fila["id"] . '1" data-accion=1 data-fila=' . $fila["id"] . ' class="btn btn-success btn-sm" value="ACEPTAR" />
+                            <input type="submit" id="aceptar' . $fila["id"] . '2" name="rechazar' . $fila["id"] . '2" data-accion=2 data-fila=' . $fila["id"] . ' class="btn btn-danger btn-sm" value="RECHAZAR" />
+                        </td>';
+                      echo '</tr>';
+                    }
+                    echo '</form>';
+                  } else {
+                    echo '<th colspan=5>No hay consultas pendientes de aprobación.</th>';
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -184,8 +138,12 @@
   <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="../codigo.js"></script>
+
 </body>
 
 </html>

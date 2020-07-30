@@ -12,7 +12,7 @@ $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 
 $pass = md5($password); //encripto la clave enviada por el usuario para compararla con la clave encriptada y almacenada en la BD
 
-$resultado = $conexion->prepare('SELECT usuario FROM usuarios WHERE usuario = ? AND password = ?');
+$resultado = $conexion->prepare('SELECT u.idusuario, u.usuario, p.legajo, p.nombre_profesor, p.correo FROM usuarios u LEFT JOIN profesor p on p.idprofesor = u.idprofesor WHERE u.usuario = ? AND u.password = ?');
 $resultado->execute([$usuario, $pass]);
 $_SESSION["s_usuario"] = null;
 $data = $resultado->fetch(PDO::FETCH_OBJ);
