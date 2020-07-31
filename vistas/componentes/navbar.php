@@ -13,7 +13,7 @@ if( $_SESSION["s_usuario"] === null){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Gestor de consultas UTN</title>
-  <link rel="stylesheet" href="..\..\estilos.css" type="text/css">
+  <link rel="stylesheet" href="..\estilos.css" type="text/css">
 </head>
 
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
