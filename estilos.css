@@ -26,6 +26,17 @@
     background-color: #7eb6c4;
     border-color: #7eb6c4;
   } 
+
+.mt--6,
+.my--6
+{
+    margin-top: -4.5rem !important;
+}
+
+.p-3
+{
+    padding: 1rem !important;
+}
   
   /* The side navigation menu */
 .sidenav {
@@ -6429,7 +6440,6 @@ input[type='button'].btn-block
     right: 0;
     bottom: 0;
     left: 0;
-
     padding: 1.25rem;
 }
 
@@ -6456,10 +6466,10 @@ input[type='button'].btn-block
     border-bottom-left-radius: calc(.375rem - 1px);
 }
 
-.card-deck .card
+/* .card-deck .card
 {
     margin-bottom: 15px;
-}
+} */
 
 @media (min-width: 576px)
 {
@@ -6769,7 +6779,7 @@ input[type='button'].btn-block
         transition: none;
     }
 }
-a.badge:hover,
+/* a.badge:hover,
 a.badge:focus
 {
     text-decoration: none;
@@ -6777,7 +6787,7 @@ a.badge:focus
 .badge:empty
 {
     display: none;
-}
+} */
 
 .btn .badge
 {
@@ -10757,11 +10767,7 @@ button.bg-darker:focus
     margin: -4.5rem !important;
 }
 
-.mt--6,
-.my--6
-{
-    margin-top: -4.5rem !important;
-}
+
 
 .mr--6,
 .mx--6
@@ -11129,10 +11135,7 @@ button.bg-darker:focus
     padding-left: .5rem !important;
 }
 
-.p-3
-{
-    padding: 1rem !important;
-}
+
 
 /* .pt-3,
 .py-3
@@ -13594,7 +13597,7 @@ button.bg-darker:focus
     {
         margin-top: -1rem !important;
     }
-    .mr-md--3,
+    /* .mr-md--3,
     .mx-md--3
     {
         margin-right: -1rem !important;
@@ -13603,7 +13606,7 @@ button.bg-darker:focus
     .my-md--3
     {
         margin-bottom: -1rem !important;
-    }
+    } */
     .ml-md--3,
     .mx-md--3
     {
@@ -15888,7 +15891,7 @@ button.bg-darker:focus
     {
         margin-bottom: .5rem !important;
     }
-    .ml-lg-n-2,
+    /* .ml-lg-n-2,
     .mx-lg-n-2
     {
         margin-left: .5rem !important;
@@ -15964,7 +15967,7 @@ button.bg-darker:focus
     .mx-lg-n7
     {
         margin-left: -6rem !important;
-    }
+    } */
     .m-lg-n8
     {
         margin: -8rem !important;
@@ -23540,7 +23543,7 @@ button.bg-red:focus
     background-color: #ec0c38 !important;
 }
 
-.bg-orange
+/* .bg-orange
 {
     background-color: #fb6340 !important;
 }
@@ -23551,9 +23554,9 @@ button.bg-orange:hover,
 button.bg-orange:focus
 {
     background-color: #fa3a0e !important;
-}
+} */
 
-.bg-yellow
+/* .bg-yellow
 {
     background-color: #ffd600 !important;
 }
@@ -23564,7 +23567,7 @@ button.bg-yellow:hover,
 button.bg-yellow:focus
 {
     background-color: #ccab00 !important;
-}
+} */
 
 .bg-green
 {
@@ -23703,10 +23706,10 @@ button.bg-lighter:focus
     background: linear-gradient(87deg, #5603ad 0, #9d03ad 100%) !important;
 }
 
-.bg-gradient-purple
+/* .bg-gradient-purple
 {
     background: linear-gradient(87deg, #8965e0 0, #bc65e0 100%) !important;
-}
+} */
 
 .bg-gradient-pink
 {
@@ -23723,10 +23726,10 @@ button.bg-lighter:focus
     background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important;
 }
 
-.bg-gradient-yellow
+/* .bg-gradient-yellow
 {
     background: linear-gradient(87deg, #ffd600 0, #beff00 100%) !important;
-}
+} */
 
 .bg-gradient-green
 {
@@ -23738,10 +23741,10 @@ button.bg-lighter:focus
     background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
 }
 
-.bg-gradient-cyan
+/* .bg-gradient-cyan
 {
     background: linear-gradient(87deg, #2bffc6 0, #2be0ff 100%) !important;
-}
+} */
 
 .bg-gradient-white
 {
@@ -24084,10 +24087,10 @@ button.section-darker:focus
     fill: #11cdef;
 }
 
-.stroke-info
+/* .stroke-info
 {
     stroke: #11cdef;
-}
+} */
 
 .fill-warning
 {
@@ -24134,10 +24137,10 @@ button.section-darker:focus
     fill: #172b4d;
 }
 
-.stroke-default
+/* .stroke-default
 {
     stroke: #172b4d;
-}
+} */
 
 .fill-white
 {
@@ -25008,7 +25011,7 @@ a.text-red:focus
     color: #d40b33 !important;
 }
 
-.text-orange
+/* .text-orange
 {
     color: #fb6340 !important;
 }
@@ -25017,9 +25020,9 @@ a.text-orange:hover,
 a.text-orange:focus
 {
     color: #ea3005 !important;
-}
+} */
 
-.text-yellow
+/* .text-yellow
 {
     color: #ffd600 !important;
 }
@@ -25028,7 +25031,7 @@ a.text-yellow:hover,
 a.text-yellow:focus
 {
     color: #b39600 !important;
-}
+} */
 
 .text-green
 {
@@ -29185,7 +29188,7 @@ input.datetimepicker[data-color='red'] + .bootstrap-datetimepicker-widget.dropdo
     color: #f5365c;
 } */
 
-input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget
+/* input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget
 {
     background-color: #fb6340;
 }
@@ -29196,7 +29199,7 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dropdown-menu.bottom:before
 {
     color: #fb6340;
-}
+} */
 
 .bootstrap-datetimepicker-widget.dropdown-black .datepicker-days .day,
 .bootstrap-datetimepicker-widget.dropdown-black .datepicker-days .minute
