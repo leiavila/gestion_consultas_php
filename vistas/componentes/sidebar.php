@@ -34,7 +34,7 @@
             </li>
       
             <li class="nav-item">
-              <a class="nav-link" href="map.html">
+              <a class="nav-link" href="../vistas/cancelacion_consultas.php">
                 <span class="nav-link-text">Cancelación de consultas</span>
               </a>
             </li>

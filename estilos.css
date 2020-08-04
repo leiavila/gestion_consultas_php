@@ -88,6 +88,24 @@
 }
 
 
+/* En el dash, los circulos de colores */
+.bg-gradient-red {
+    background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important;
+}
+
+.bg-gradient-green {
+    background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+}
+
+.bg-gradient-info {
+    background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+}
+
+
 
 
 /* esto viene de argon 
@@ -180,11 +198,8 @@ body
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-
     margin: 0;
-
     text-align: left;
-
     color: #525f7f;
     background-color: #f8f9fe;
 }
@@ -231,13 +246,13 @@ abbr[data-original-title]
     text-decoration-skip-ink: none;
 } */
 
-address
+/* address
 {
     font-style: normal;
     line-height: inherit; 
 
     margin-bottom: 1rem;
-}
+} */
 
 ol,
 ul,
@@ -23603,10 +23618,7 @@ button.bg-lighter:focus
     background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
 }
 
-.bg-gradient-info
-{
-    background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
-}
+
 
 .bg-gradient-warning
 {
@@ -23668,25 +23680,16 @@ button.bg-lighter:focus
     background: linear-gradient(87deg, #f3a4b5 0, #f3b4a4 100%) !important;
 }
 
-.bg-gradient-red
-{
-    background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
-}
 
-.bg-gradient-orange
-{
-    background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important;
-}
+
+
 
 /* .bg-gradient-yellow
 {
     background: linear-gradient(87deg, #ffd600 0, #beff00 100%) !important;
 } */
 
-.bg-gradient-green
-{
-    background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
-}
+
 
 .bg-gradient-teal
 {
@@ -23780,7 +23783,7 @@ button.bg-translucent-info:focus
     background-color: rgba(250, 70, 29, .6) !important;
 }
 
-a.bg-translucent-warning:hover,
+/* a.bg-translucent-warning:hover,
 a.bg-translucent-warning:focus,
 button.bg-translucent-warning:hover,
 button.bg-translucent-warning:focus
@@ -23791,9 +23794,9 @@ button.bg-translucent-warning:focus
 .bg-translucent-danger
 {
     background-color: rgba(243, 20, 64, .6) !important;
-}
+} */
 
-a.bg-translucent-danger:hover,
+/* a.bg-translucent-danger:hover,
 a.bg-translucent-danger:focus,
 button.bg-translucent-danger:hover,
 button.bg-translucent-danger:focus
@@ -23804,9 +23807,9 @@ button.bg-translucent-danger:focus
 .bg-translucent-light
 {
     background-color: rgba(153, 163, 173, .6) !important;
-}
+} */
 
-a.bg-translucent-light:hover,
+/* a.bg-translucent-light:hover,
 a.bg-translucent-light:focus,
 button.bg-translucent-light:hover,
 button.bg-translucent-light:focus
@@ -23817,7 +23820,7 @@ button.bg-translucent-light:focus
 .bg-translucent-dark
 {
     background-color: rgba(17, 19, 21, .6) !important;
-}
+} */
 
 a.bg-translucent-dark:hover,
 a.bg-translucent-dark:focus,
