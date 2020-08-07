@@ -10,14 +10,14 @@
   <title>UTN - Módulo gestión consultas</title>
 
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/vistas/listado_consultas.css">
-  <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
+<!--   <link rel="stylesheet" href="/vistas/listado_consultas.css">
+ -->  <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css">
+  <link rel="stylesheet" href="..\estilos.css" type="text/css">
 </head>
 
 <body>
@@ -69,9 +69,22 @@
                 </thead>
                 <tbody class="list">
                 <?php
+                  $Cant_por_Pag = 5;
                   $objeto = new Conexion();
                   $conexion = $objeto->Conectar();
                   $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion;');
+                  $resultado->execute();
+                  $pagina = isset ( $_GET['pagina']) ? $_GET['pagina'] : null ;
+                  if (!$pagina) {
+                  $inicio = 0;
+                  $pagina=1;
+                  }
+                  else {
+                  $inicio = ($pagina - 1) * $Cant_por_Pag;
+                  }
+                  $total_registros= $resultado->rowCount();
+                  $total_paginas = ceil($total_registros/ $Cant_por_Pag);
+                  $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion LIMIT ' . $inicio . ',' . $Cant_por_Pag . ';');
                   $resultado->execute();
                   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
@@ -98,32 +111,25 @@
                 </tbody>
               </table>
             </div>
-            <!-- Card footer -->
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Siguiente</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            <?php
+if ($total_paginas > 1){
+  echo '<div class="card-footer py-4">';
+  echo '  <nav aria-label="...">';
+  echo '    <ul class="pagination justify-content-end mb-0">';
+
+for ($i=1;$i<=$total_paginas;$i++){
+  
+  echo '      <li class="page-item ';
+  echo ($pagina == $i) ?  'active': '';
+  echo '">';
+  echo '        <a class="page-link" href="listado_consultas.php?pagina=' . $i . '">' . $i . '</a>';
+  echo'       </li>';
+}
+echo '    </ul>';
+echo '  </nav>';
+echo '</div>';
+}
+?>
           </div>
         </div>
       </div>

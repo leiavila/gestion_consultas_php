@@ -38,21 +38,27 @@
                 <span class="nav-link-text">Cancelación de consultas</span>
               </a>
             </li>
+            <?php 
+            session_start();
+            if (!isset($_SESSION["s_profesor"])) {
+              echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="../upload-excel/uploadexc.php">';
+              echo '<span class="nav-link-text">Carga de horas</span>';
+              echo '</a>';
+              echo '</li>';
+            }
+            if (isset($_SESSION["s_profesor"])) {
 
-            <li class="nav-item">
-              <a class="nav-link" href="../upload-excel/uploadexc.php">
-                <span class="nav-link-text">Carga de horas</span>
-              </a>
-            </li>
+            echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="../vistas/mi_cuenta.php">';
+                echo '<span class="nav-link-text">Mi perfil</span>';
+              echo '</a>';
+            echo '</li>';
+          }
 
+            ?>
             <li class="nav-item">
-              <a class="nav-link" href="../vistas/mi_cuenta.php">
-                <span class="nav-link-text">Mi perfil</span>
-              </a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">
+              <a class="nav-link" href="../bd/logout.php">
                 <span class="nav-link-text">Cerrar sesión</span>
               </a>
             </li>

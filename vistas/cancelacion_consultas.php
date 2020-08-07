@@ -62,11 +62,26 @@
                 </thead>
                 <tbody class="list">
                 <?php
+                  $Cant_por_Pag = 5;
                   $objeto = new Conexion();
                   $conexion = $objeto->Conectar();
                   $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion;');
                   $resultado->execute();
+                  $pagina = isset ( $_GET['pagina']) ? $_GET['pagina'] : null ;
+                  if (!$pagina) {
+                  $inicio = 0;
+                  $pagina=1;
+                  }
+                  else {
+                  $inicio = ($pagina - 1) * $Cant_por_Pag;
+                  }
+                  $total_registros= $resultado->rowCount();
+                  $total_paginas = ceil($total_registros/ $Cant_por_Pag);
+                  $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion LIMIT ' . $inicio . ',' . $Cant_por_Pag . ';');
+                  $resultado->execute();
                   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+                  $total_registros= $resultado->rowCount();
 
                   if ($resultado->rowCount() > 0) {
                     echo ' <form class="form" action="" id="accionBoton" method="POST">';
@@ -91,7 +106,25 @@
                 </tbody>
               </table>
             </div>
-         
+            <?php
+if ($total_paginas > 1){
+  echo '<div class="card-footer py-4">';
+  echo '  <nav aria-label="...">';
+  echo '    <ul class="pagination justify-content-end mb-0">';
+
+for ($i=1;$i<=$total_paginas;$i++){
+  
+  echo '      <li class="page-item ';
+  echo ($pagina == $i) ?  'active': '';
+  echo '">';
+  echo '        <a class="page-link" href="listado_consultas.php?pagina=' . $i . '">' . $i . '</a>';
+  echo'       </li>';
+}
+echo '    </ul>';
+echo '  </nav>';
+echo '</div>';
+}
+?>
         
           </div>
         </div>

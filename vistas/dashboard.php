@@ -145,6 +145,11 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Materia</th>
+                    <?php 
+                      if (!isset($_SESSION["s_profesor"])) {
+                        echo '<th scope="col">Profesor</th>';
+                      }
+                    ?>
                     <th scope="col">Fecha </th>
                     <th scope="col">Hora inicio - fin</th>
                     <th scope="col">Cantidad de alumnos</th>
@@ -152,9 +157,22 @@
                 </thead>
                 <tbody>
                   <?php
+                  $Cant_por_Pag = 5;
                   $objeto = new Conexion();
                   $conexion = $objeto->Conectar();
                   $resultado = $conexion->prepare('SELECT * FROM proximas_consultas;');
+                  $resultado->execute();
+                  $pagina = isset ( $_GET['pagina']) ? $_GET['pagina'] : null ;
+                  if (!$pagina) {
+                  $inicio = 0;
+                  $pagina=1;
+                  }
+                  else {
+                  $inicio = ($pagina - 1) * $Cant_por_Pag;
+                  }
+                  $total_registros= $resultado->rowCount();
+                  $total_paginas = ceil($total_registros/ $Cant_por_Pag);
+                  $resultado = $conexion->prepare('SELECT * FROM proximas_consultas LIMIT ' . $inicio . ',' . $Cant_por_Pag . ';');
                   $resultado->execute();
                   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
@@ -162,6 +180,9 @@
                     foreach($data as $fila) {
                       echo '<tr>';
                       echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
+                      if (!isset($_SESSION["s_profesor"])) {
+                        echo '<td>' . $fila["nombre_profesor"] . '</td>';
+                      }
                       echo '<td>' . $fila["fecha"] . '</td>';
                       echo '<td>' . $fila["hora_ini_fin"] . '</td>';
                       echo '<td>' . $fila["cantidad_alumnos"] . '</td>';
@@ -174,6 +195,25 @@
                 </tbody>
               </table>
             </div>
+            <?php
+if ($total_paginas > 1){
+  echo '<div class="card-footer py-4">';
+  echo '  <nav aria-label="...">';
+  echo '    <ul class="pagination justify-content-end mb-0">';
+
+for ($i=1;$i<=$total_paginas;$i++){
+  
+  echo '      <li class="page-item ';
+  echo ($pagina == $i) ?  'active': '';
+  echo '">';
+  echo '        <a class="page-link" href="dashboard.php?pagina=' . $i . '">' . $i . '</a>';
+  echo'       </li>';
+}
+echo '    </ul>';
+echo '  </nav>';
+echo '</div>';
+}
+?>
           </div>
         </div>
       </div>

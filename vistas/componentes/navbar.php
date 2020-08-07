@@ -44,13 +44,13 @@ if( $_SESSION["s_usuario"] === null){
                     <img alt="imagen_usuario" src="..\..\img\img_logo.jpg">
                   </span>
                   <div> &nbsp;
-                    <span><?php echo $_SESSION["s_usuario"];?></span>
+                    <span><?php echo isset($_SESSION["s_profesor"]) ? $_SESSION["s_nombre_profesor"]: $_SESSION["s_usuario"];?></span>
                   </div>
                 </div>
               </a>
               
               <div class="dropdown-menu dropdown-menu-right ">               
-                <a href="#!" class="dropdown-item">
+                <a href="../../bd/logout.php" class="dropdown-item">
                   <span >Cerrar sesión</span>
                 </a>
               </div>

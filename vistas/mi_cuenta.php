@@ -38,9 +38,6 @@
                 <div class="col-8">
                   <h3>Editar perfil</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div>
               </div>
             </div>
             <div class="card-body">
