@@ -177,7 +177,7 @@
             var idconsultas_horario = document.activeElement.dataset.idconsultas_horario;
             var fecha = document.activeElement.dataset.fecha;        
             $.ajax({
-                url:"../controller/inscribir_consulta.php",
+                url:"controller/inscribir_consulta.php",
                 type:"POST",
                 datatype: "text",
                 data: {idconsultas_horario:idconsultas_horario, fecha:fecha}, 
