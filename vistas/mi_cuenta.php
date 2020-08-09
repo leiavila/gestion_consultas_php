@@ -11,23 +11,18 @@
 </head>
 
 <body>
-  <!-- Sidenav -->
 
  <?php include("componentes/sidebar.php") ?>
 
-
-  <!-- Main content -->
   <div class="main-content" id="panel">
-     <!-- NavBar -->
+
      <?php include("componentes/navbar.php") ?>
 
-    <!-- Header -->
-    <!-- Header -->
 <br>
 <br>
 <br>
 <br>
-    <!-- Page content -->
+  
     <div class="container-fluid mt--6">
       <div class="row">
         
@@ -72,7 +67,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Observaciones</label>
-                    <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    <textarea rows="4" class="form-control" placeholder="Ingrese observaciones"></textarea>
                   </div>
                 </div>
               </form>
@@ -83,14 +78,12 @@
    
     </div>
   </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
+
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
 </body>
 

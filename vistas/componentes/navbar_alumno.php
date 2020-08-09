@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html> 
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
@@ -14,6 +12,5 @@
     <img src="\..\img\LOGO.png" width="30" height="30" class="d-inline-block align-top" alt="logo_utn">
   </a>
   <a class="btn-login" href="../login.html" type="button" class="btn btn-outline-primary" name="login">Ingresar</a>
-
 </nav>
 </html>
