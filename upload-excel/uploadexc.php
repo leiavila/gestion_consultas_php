@@ -13,12 +13,8 @@
     <?php include("../vistas/componentes/sidebar.php") ?>
     <div class="main-content" id="panel">
         <?php include("../vistas/componentes/navbar.php") ?>
+        <?php $title = "Carga de horas"; include("../vistas/componentes/header.php") ?>
 
-        <div class="header bg-primary pb-6 container-fluid">
-            <div style="padding: 16px" class="col-lg-6 col-7">
-                <h2 class="text-white">Carga de horas</h6>
-            </div>
-        </div>
 
         <div class="container-fluid mt--6">
             <div class="row">
@@ -88,26 +84,30 @@
             $finMin = $objPHPExcel->getActiveSheet()->getCell('F' . $i)->getCalculatedValue();
             $dia = $objPHPExcel->getActiveSheet()->getCell('G' . $i)->getCalculatedValue();
 
-            $sql = "create temporary table if not exists TMP_consultas (legajo int , 
-												cod_materia varchar(45), 
-                                                dia varchar(45), 
-                                                hora_inicio varchar(45), 
-                                                min_inicio varchar(45),
-                                                min_fin varchar(45),
-                                                hora_fin varchar(45)) ;
-INSERT INTO TMP_consultas (legajo, id_materia,dia, hora_inicio, min_inicio, hora_fin, min_fin) VALUES('$legajo','$materia','$dia', '$inicioHora', '$inicioMin', '$finHora', '$finMin');
-
-start transaction;
-insert into consultas_horario (id_profesor,id_materia,diaSemana, horarioConsultaInicio, HorarioconsultaFin, estadoConsulta, fecha_carga)
-select  p.id_profesor, m.id_materia, c.hora_fin+':'+c.min_inicio, c.hora_inicio+':'+c.min_fin, 'Aceptada', current_date()
-from TMP_consultas c 
-join profesor p 
-		on c.legajo=p.legajo
-join materia m 
-		on m.matriculaMateria=c.cod_materia;
-commit;
-";
-
+           
+            $sql = "
+            start transaction;
+            drop temporary table if exists TMP_consultas;
+            create temporary table if not exists TMP_consultas (legajo int , 
+                                                            cod_materia varchar(45), 
+                                                            dia varchar(45), 
+                                                            hora_inicio varchar(45), 
+                                                            min_inicio varchar(45),
+                                                            min_fin varchar(45),
+                                                            hora_fin varchar(45)) ;
+            INSERT INTO TMP_consultas (legajo, cod_materia,dia, hora_inicio, min_inicio, hora_fin, min_fin) 
+            VALUES('$legajo','$materia','$dia', '$inicioHora', '$inicioMin', '$finHora', '$finMin');
+            
+            
+            insert into consultas_horario (idprofesor,idmateria,dia, hora_ini, Hora_fin, estado, Fecha_carga)
+            select distinct  p.idprofesor, m.idmateria,dia, concat(c.hora_inicio,':',c.min_inicio), concat(c.hora_fin,':',c.min_fin), 'Aceptada', current_date()
+            from TMP_consultas c 
+            left join profesor p 
+                    on c.legajo=p.legajo
+            left join materia m 
+                    on upper(m.cod_materia)=upper(c.cod_materia);
+            commit;
+            ";
             $resultado = $conexion->prepare($sql);
             $resultado->execute();
         }
@@ -115,10 +115,10 @@ commit;
 
 
     // borro las variables porque si no cuando volves a entrar no se limpian
-    $vars = array_keys(get_defined_vars());
-    foreach ($vars as $var) {
-        unset(${"$var"});
-    }
+    // $vars = array_keys(get_defined_vars());
+    // foreach ($vars as $var) {
+    //     unset(${"$var"});
+    // }
 
 
     ?>
