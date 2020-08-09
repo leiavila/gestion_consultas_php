@@ -7,7 +7,7 @@
   <title>UTN - Módulo gestión consultas</title>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- <link rel="stylesheet" href="..\estilos.css" type="text/css"> -->
+  <link rel="stylesheet" href="..\estilos.css" type="text/css">
 </head>
 
 <body>
