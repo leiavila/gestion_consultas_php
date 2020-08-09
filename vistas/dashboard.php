@@ -120,12 +120,12 @@
             <?php
             if ($total_paginas > 1) {
               echo '<div class="card-footer py-4">';
-              echo '  <nav aria-label="...">';
-              echo '    <ul class="pagination justify-content-end mb-0">';
+              echo '<nav aria-label="...">';
+              echo '<ul class="pagination justify-content-end mb-0">';
 
               for ($i = 1; $i <= $total_paginas; $i++) {
 
-                echo '      <li class="page-item ';
+                echo '<li class="page-item ';
                 echo ($pagina == $i) ?  'active' : '';
                 echo '">';
                 echo '        <a class="page-link" href="dashboard.php?pagina=' . $i . '">' . $i . '</a>';

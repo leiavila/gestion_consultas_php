@@ -17,7 +17,7 @@
         </a>
       </div>
       <div class="navbar-inner">
-        <!-- Collapse -->
+       
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- ver como pasar parametro para que se ponga la clase ACTIVE -->
           <ul class="navbar-nav">

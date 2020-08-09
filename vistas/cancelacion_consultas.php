@@ -17,21 +17,9 @@
   <?php include("../bd/conexion.php") ?>
 
   <div class="main-content" id="panel">
-
     <?php include("componentes/navbar.php") ?>
-
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body">
-
-          <div style="padding: 16px" class="col-lg-6 col-7">
-            <h2 class="text-white">Cancelación de consultas</h6>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
+  
+    <?php $title = "Cancelación de consultas"; include("componentes/header.php") ?>
 
 
     <div class="container-fluid mt--6">
@@ -43,82 +31,73 @@
               <h3 class="mb-0">Cancelación de consultas</h3>
             </div>
 
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Materia</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Inicio - Fin</th>
-                    <th scope="col">Alumno</th>
-                    <th scope="col">Acción</th>
+            <div class="card-body">
+            <form>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Seleccione tipo de cancelación</label>
+                        <select name="type" class="form-control">
+                                <option value=1>Día</option>
+                                <option value=2>Semana</option>
+                        </select>
+                      </div>
+                    </div>
 
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  <?php
-                  $Cant_por_Pag = 5;
-                  $objeto = new Conexion();
-                  $conexion = $objeto->Conectar();
-                  $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion;');
-                  $resultado->execute();
-                  $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : null;
-                  if (!$pagina) {
-                    $inicio = 0;
-                    $pagina = 1;
-                  } else {
-                    $inicio = ($pagina - 1) * $Cant_por_Pag;
-                  }
-                  $total_registros = $resultado->rowCount();
-                  $total_paginas = ceil($total_registros / $Cant_por_Pag);
-                  $resultado = $conexion->prepare('SELECT * FROM consultas_pendientes_aprobacion LIMIT ' . $inicio . ',' . $Cant_por_Pag . ';');
-                  $resultado->execute();
-                  $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <!-- aca tendria que poder seleccionarse segun lo de arriba yo lo dejo en semana pero tendria que ser week o date-->
+                        <label class="form-control-label" for="input-first-name">Seleccione Dia/semana</label>
+                        <input type="week" id="start" name="calendar"
+                        value="2018-07-22"
+                        min="2018-01-01" max="2018-12-31" class="form-control">
+                      </div>
+                    </div>
 
-                  $total_registros = $resultado->rowCount();
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Horas de consulta a cancelar</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            16:10 - 17:00 - Entornos gráficos
+                          </label>
+                        </div>
+              
 
-                  if ($resultado->rowCount() > 0) {
-                    echo ' <form class="form" action="" id="accionBoton" method="POST">';
-                    foreach ($data as $fila) {
-                      echo '<tr>';
-                      echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
-                      echo '<td>' . $fila["fecha"] . '</td>';
-                      echo '<td>' . $fila["hora_ini_fin"] . '</td>';
-                      echo '<td>' . $fila["nombre"] . '</td>';
-                      echo '
-                        <td>
-                            <input type="submit" id="aceptar' . $fila["id"] . '1" name="aceptar' . $fila["id"] . '1" data-accion=1 data-fila=' . $fila["id"] . ' class="btn btn-success btn-sm" value="ACEPTAR" />
-                            <input type="submit" id="aceptar' . $fila["id"] . '2" name="rechazar' . $fila["id"] . '2" data-accion=2 data-fila=' . $fila["id"] . ' class="btn btn-danger btn-sm" value="RECHAZAR" />
-                        </td>';
-                      echo '</tr>';
-                    }
-                    echo '</form>';
-                  } else {
-                    echo '<th colspan=5>No hay consultas pendientes de aprobación.</th>';
-                  }
-                  ?>
-                </tbody>
-              </table>
+
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                          <label class="form-check-label" for="defaultCheck2">
+                          18:00 - 19:00 - Simulación
+                          </label>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+       
+                
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Motivo de la cancelación</label>
+                    <textarea rows="4" class="form-control" required></textarea>
+                  </div>
+                </div>
+
+                <div class="pl-lg-12">
+                <p><input type="submit" class="btn btn-primary btn-block" value="CANCELAR CONSULTA" /> </p>
+
+                </div>
+              </form>
             </div>
-            <?php
-            if ($total_paginas > 1) {
-              echo '<div class="card-footer py-4">';
-              echo '  <nav aria-label="...">';
-              echo '    <ul class="pagination justify-content-end mb-0">';
 
-              for ($i = 1; $i <= $total_paginas; $i++) {
-
-                echo '      <li class="page-item ';
-                echo ($pagina == $i) ?  'active' : '';
-                echo '">';
-                echo '        <a class="page-link" href="listado_consultas.php?pagina=' . $i . '">' . $i . '</a>';
-                echo '       </li>';
-              }
-              echo '    </ul>';
-              echo '  </nav>';
-              echo '</div>';
-            }
-            ?>
+    
 
           </div>
         </div>

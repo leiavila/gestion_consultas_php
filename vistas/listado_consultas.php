@@ -18,16 +18,7 @@
   <div class="main-content" id="panel">
 
     <?php include("componentes/navbar.php") ?>
-
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body">
-          <div style="padding: 16px" class="col-lg-6 col-7">
-            <h2 class="text-white">Listado de consultas</h6>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php $title = "Listado de consultas"; include("componentes/header.php") ?>
 
 
     <div class="container-fluid mt--6">
@@ -105,11 +96,11 @@ if ($total_paginas > 1){
 
 for ($i=1;$i<=$total_paginas;$i++){
   
-  echo '      <li class="page-item ';
+  echo '<li class="page-item ';
   echo ($pagina == $i) ?  'active': '';
   echo '">';
-  echo '        <a class="page-link" href="listado_consultas.php?pagina=' . $i . '">' . $i . '</a>';
-  echo'       </li>';
+  echo '<a class="page-link" href="listado_consultas.php?pagina=' . $i . '">' . $i . '</a>';
+  echo'</li>';
 }
 echo '    </ul>';
 echo '  </nav>';
@@ -119,8 +110,6 @@ echo '</div>';
           </div>
         </div>
       </div>
-    
-
     </div>
   </div>
 
