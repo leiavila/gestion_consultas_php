@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">ANOTARME</button>
+                <button class="btn btn-outline-primary btn-sm" type="submit">ANOTARME</button>
                         
                                                
 
