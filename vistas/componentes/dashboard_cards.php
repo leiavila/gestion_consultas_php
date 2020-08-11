@@ -2,9 +2,7 @@
 <?php
 
 // aca le puse el profe que sea nulo asi no rompe, preguntar si se tiene que pasar el legajo o q
-$profesor = '';
-// materia iria nula porque es el dash
-$materia = '';
+$profesor = 'Admin';
 
 switch ($cardnum) {
     case 1:
@@ -18,10 +16,8 @@ switch ($cardnum) {
                 join consultas_horario ch 
                     on c.idconsultas_horario=ch.idconsultas_horario 
                 join profesor p  
-                    on c.idprofesor=p.idprofesor 
-                join materia m  
-                    on m.cod_materia=c.cod_materia 
-        where nombre_profesor= case when '$profesor' is null then nombre_profesor else '$profesor' end 
+                    on ch.idprofesor=p.idprofesor 
+        where nombre_profesor= case when '$profesor' ='Admin' then nombre_profesor else '$profesor' end 
         and upper(c.estado) like'%PENDIENTE%';   
        ";
             $resultado = $conexion->prepare($sql);
@@ -59,9 +55,7 @@ switch ($cardnum) {
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         join profesor p 
-                on c.idprofesor=p.idprofesor
-        join materia m 
-                on m.cod_materia=c.cod_materia
+                on ch.idprofesor=p.idprofesor
         where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
         and upper(c.estado) like 'CANCELADA';
         commit;
@@ -91,9 +85,7 @@ switch ($cardnum) {
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         join profesor p 
-                on c.idprofesor=p.idprofesor
-        join materia m 
-                on m.cod_materia=c.cod_materia
+                on ch.idprofesor=p.idprofesor
         where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
         and upper(c.estado) like '%ACEPTADA%';
         ";
