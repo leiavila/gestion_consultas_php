@@ -1,8 +1,9 @@
 
 <?php
 
-// aca le puse el profe que sea nulo asi no rompe, preguntar si se tiene que pasar el legajo o q
-$profesor = 'Admin';
+// Saco nombre de usuario
+$nombre_usuario = $_SESSION['s_usuario'];
+//echo $nombre_usuario;
 
 switch ($cardnum) {
     case 1:
@@ -15,9 +16,9 @@ switch ($cardnum) {
                 from consultas c  
                 join consultas_horario ch 
                     on c.idconsultas_horario=ch.idconsultas_horario 
-                join profesor p  
-                    on ch.idprofesor=p.idprofesor 
-        where nombre_profesor= case when '$profesor' ='Admin' then nombre_profesor else '$profesor' end 
+                left join usuarios u 
+                    on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
+        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like'%PENDIENTE%';   
        ";
             $resultado = $conexion->prepare($sql);
@@ -38,7 +39,9 @@ switch ($cardnum) {
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         join profesor p on ch.idprofesor=p.idprofesor
         join tiempo t on t.idtiempo=c.idtiempo
-        where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
+        left join usuarios u 
+            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
+        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
         and t.fecha=current_date();
         ";
         $resultado = $conexion->prepare($sql);
@@ -54,9 +57,9 @@ switch ($cardnum) {
         select count(*)
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
-        join profesor p 
-                on ch.idprofesor=p.idprofesor
-        where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
+        left join usuarios u 
+            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
+        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like 'CANCELADA';
         commit;
         ";
@@ -84,9 +87,9 @@ switch ($cardnum) {
         select count(*)
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
-        join profesor p 
-                on ch.idprofesor=p.idprofesor
-        where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
+        left join usuarios u 
+            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
+        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like '%ACEPTADA%';
         ";
 
