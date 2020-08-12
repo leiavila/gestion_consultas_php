@@ -138,15 +138,83 @@
                                                             class="btn btn-outline-primary btn-sm" value="ANOTARME" />  
                                                         </td>';
                                                 echo '</tr>';
+                                                // <!-- Button trigger modal -->
+                                            echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            ANOTARME
+                                            </button>';
                                             }
                                             echo '</form>';
+                                           
                                         } else {
                                             echo '<th colspan=6>No hay consultas para los filtros ingresados.</th>';
                                             }
                                             echo '</tbody>';
                                            echo '</table>';
                                     }
+                                    
+
+                                    
+                                    
                                     ?>
+                             
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Datos alumnos </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form>
+                            <h6 class="heading-small text-muted mb-4">Información Alumno</h6>
+                            <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">Dirección de correo</label>
+                                    <input type="email" id="input-email" class="form-control" placeholder="Ingrese su email">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-legajo">Legajo</label>
+                                    <input type="integer" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-first-name">Nombre</label>
+                                    <input type="text" id="input-first-name" class="form-control" placeholder="First name" value="Nombre">
+                                </div>
+                                </div>
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Apellido</label>
+                                    <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value="Apellido">
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Terminar inscripcion</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+
 
                         </div>
 
