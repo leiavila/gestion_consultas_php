@@ -3,7 +3,6 @@
 
 // Saco nombre de usuario
 $nombre_usuario = $_SESSION['s_usuario'];
-//echo $nombre_usuario;
 
 switch ($cardnum) {
     case 1:
@@ -11,7 +10,6 @@ switch ($cardnum) {
         $title = "Consultas Pendientes";
         $letter = "P";
 
-        // ERROR
         $sql = "select count(*) 
                 from consultas c  
                 join consultas_horario ch 
@@ -24,12 +22,6 @@ switch ($cardnum) {
             $resultado = $conexion->prepare($sql);
             $resultado->execute();
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            if ($resultado->rowCount() > 0) {
-                print_r($data) ;
-            } else {
-                echo '<label class="text-white">ERROR</label>';
-            }
-
         break;
     case 2:
         $classcss = "bg-gradient-orange";
@@ -64,24 +56,17 @@ switch ($cardnum) {
         commit;
         ";
 
-        // ERROR
+
         $resultado = $conexion->prepare($sql);
         $resultado->execute();
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        if ($resultado->rowCount() > 0) {
-            print_r($data) ;
-        } else {
-            echo '<label class="text-white">ERROR</label>';
 
-        }
         break;
     case 4: 
         $classcss = "bg-gradient-info";
         $title = "CONSULTAS ACEPTADAS";
         $letter = "A";
         
-
-        // ERROR
 
         $sql = "
         select count(*)
@@ -97,12 +82,7 @@ switch ($cardnum) {
         $resultado->execute();
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
        
-        if ($resultado->rowCount() > 0) {
-            print_r($data) ;
-        } else {
-            echo '<label class="text-white">ERROR</label>';
-
-        }
+  
     break;
     // case 5:
     //     $classcss = "bg-gradient-info";
