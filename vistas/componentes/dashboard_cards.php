@@ -1,7 +1,5 @@
 
 <?php
-
-// Saco nombre de usuario
 $nombre_usuario = $_SESSION['s_usuario'];
 
 switch ($cardnum) {
@@ -75,7 +73,7 @@ switch ($cardnum) {
         left join usuarios u 
             on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
         where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like '%ACEPTADA%';
+        and upper(c.estado) like '%Confirmado%';
         ";
 
         $resultado = $conexion->prepare($sql);
@@ -109,6 +107,7 @@ switch ($cardnum) {
 ?>
 
 <div class="col-xl-3 col-md-6">
+    <br>
     <div class="card card-stats">
         <div class="card-body">
             <div class="row">
