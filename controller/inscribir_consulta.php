@@ -6,39 +6,42 @@ try {
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-// Recepcion de datos enviados mediante POST dsd ajax 
-// Aca me traigo desde la consulta de carga alumno 
 $idconsultas_horario = (isset($_POST['idconsultas_horario'])) ? $_POST['idconsultas_horario'] : '';
 $idtiempo = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
-$legajo =(isset($_POST['Legajo'])) ? $_POST['Legajo'] : '' ;
-$Nombre =(isset($_POST['Nombre'])) ? $_POST['Nombre'] : '' ;
-$Apellido =(isset($_POST['Apellido'])) ? $_POST['Apellido'] : '' ;
-$correo =(isset($_POST['Correo'])) ? $_POST['Correo'] : '' ; # Hay que sacar de algun lado este dato. No seria el mail?
+$legajo =(isset($_POST['legajo'])) ? $_POST['legajo'] : '' ;
+$nombre =(isset($_POST['nombre'])) ? $_POST['nombre'] : '' ;
+$apellido =(isset($_POST['apellido'])) ? $_POST['apellido'] : '' ;
+$correo =(isset($_POST['correo'])) ? $_POST['correo'] : '' ; # Hay que sacar de algun lado este dato. No seria el mail?
+
 $resultado = $conexion->prepare(' 
-start transaction;
+START TRANSACTION;
 
 insert into alumno(legajo, nombre, correo)
-select j.legajo, j.nombre, j.correo from (select '$Legajo' legajo, upper(concat('$Nombre',' ','$Apellido' ))nombre, '$correo' correo) j
+select j.legajo, j.nombre, j.correo from (select ? legajo, upper(concat(?, " ", ? ))nombre, ? correo) j
 left join alumno a on j.legajo=a.legajo
 where a.legajo is null;
 
 update  alumno a
-join  (select '$Legajo' legajo, upper(concat('$Nombre',' ','$Apellido' ))nombre, '$correo' correo) j on j.legajo=a.legajo
+join  (select ? legajo, upper(concat(?, " ", ? ))nombre, ? correo) j on j.legajo=a.legajo
 set a.nombre= j.nombre, 
 a.correo= j.correo;
 
-insert into consultas(idtiempo, idalumno, estado, idconsultas_horario, fecha)
-select '$idtiempo', idalumno, "Pendiente", '$idconsultas_horario', getdate()
+COMMIT;
+START TRANSACTION;
+set @idalumno = (select idalumno from alumno where legajo = ?);
+
+insert into consultas( idalumno, estado, idconsultas_horario, fecha)
+select @idalumno, "Pendiente", ? , ?
 from alumno a 
-Where a.legajo='$Legajo';
- 
-Commit;
+Where a.legajo=?;
+COMMIT;
 
 ');
-$retorno = $resultado->execute([$idalumno, 'Pendiente', $idconsultas_horario, $fecha]);
+$retorno = $resultado->execute([$legajo, $nombre, $apellido, $correo, $legajo, $nombre, $apellido, $correo, $legajo, $idconsultas_horario, $idtiempo, $legajo ]);
 
 print $retorno;
-$conexion=null;
+
+header("Location: ../index.php?retorno=" . $retorno);
 
 } catch (PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';

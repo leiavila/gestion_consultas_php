@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>UTN - Módulo gestión consultas</title>
 
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href="estilos.css" type="text/css">
+    <!-- <link rel="stylesheet" href="\..\estilos.css" type="text/css"> -->
 </head>
 
 <body>
@@ -100,8 +100,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="table-responsive">
-                            
                                     <?php
+                                     if(isset($_GET['retorno']) && $_GET['retorno'] == 1) {
+                                         echo '<div class="correcto">Consulta registrada correctamente.</div>';
+                                      }
+
                                     if(isset($_GET['buscar'])) {
                                         echo '<table class="table align-items-center table-flush">';
                                         echo '<thead class="thead-white">';
@@ -122,31 +125,101 @@
 
                                         if ($resultado->rowCount() > 0) {
 
-                                            echo ' <form class="form" action="" id="accionBoton" method="POST">';
+                                            echo ' <form class="form" action="" method="POST">';
                                             foreach ($data as $fila) {
+                                                $date = strtotime($fila["fecha"]);
+                                                $new_date = date('d-m-Y', $date);
                                                 echo '<tr>';
                                                 echo '<td><b>' . $fila["nombre_materia"] . '</b></td>';
-                                                echo '<td>' . $fila["fecha"] . '</td>';
+                                                echo '<td>' .   $new_date . '</td>';
                                                 echo '<td>' . $fila["nombre_profesor"] . '</td>';
                                                 echo '<td>' . $fila["dia"] . '</td>';
                                                 echo '<td>' . $fila["hora_ini"] . '</td>';
-                                                echo ' <td> <input type="submit" 
+                                                echo ' <td> <input type="button" 
                                                             id="aceptar' . $fila["fecha"] . $fila["hora_ini"] . $fila["idconsultas_horario"] . '" 
                                                             name="aceptar' . $fila["fecha"] . $fila["hora_ini"] . $fila["idconsultas_horario"] . '" 
                                                             data-fecha=' . $fila["fecha"] . ' 
                                                             data-idconsultas_horario=' . $fila["idconsultas_horario"] . ' 
-                                                            class="btn btn-outline-primary btn-sm" value="ANOTARME" />  
+                                                            class="btn btn-outline-primary btn-sm openModal" value="ANOTARME"
+                                                            data-toggle="modal" data-target="#ModalDatosAlumnos" />  
                                                         </td>';
                                                 echo '</tr>';
                                             }
                                             echo '</form>';
+                                           
                                         } else {
                                             echo '<th colspan=6>No hay consultas para los filtros ingresados.</th>';
                                             }
                                             echo '</tbody>';
                                            echo '</table>';
                                     }
+                                    
+
+                                    
+                                    
                                     ?>
+                             
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ModalDatosAlumnos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Datos alumnos </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form action="controller/inscribir_consulta.php" method="POST">
+                            <input type="hidden" id="fecha" name="fecha" value="">
+                            <input type="hidden" id="idconsultas_horario" name="idconsultas_horario" value="">
+                            <h6 class="heading-small text-muted mb-4">Información Alumno</h6>
+                            <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">Dirección de correo</label>
+                                    <input type="email" id="input-email" name="correo" class="form-control" placeholder="Ingrese su email">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-legajo">Legajo</label>
+                                    <input type="integer" name="legajo" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-first-name">Nombre</label>
+                                    <input type="text"  name="nombre" id="input-first-name" class="form-control" placeholder="First name" value="">
+                                </div>
+                                </div>
+                                <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Apellido</label>
+                                    <input type="text"  name="apellido" id="input-last-name" class="form-control" placeholder="Last name" value="">
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" name="cancelar">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" name="terminar">Terminar inscripcion</button>
+                        </div>
+                        </form>
+                        </div>
+ 
+                        </div>
+                    </div>
+                    </div>
+
+
+
 
                         </div>
 
@@ -158,13 +231,13 @@
         </div>
     </div>
 
-    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
-    <script src="assets/js/argon.js?v=1.2.0"></script>
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="../assets/js/argon.js?v=1.2.0"></script>
   
 
     <script>
@@ -172,15 +245,22 @@
             document.getElementById('buscar').reset();
             document.location.href = "index.php";
         }
-        $('#accionBoton').submit(function(e){
-            e.preventDefault();
+        $(document).on("click", ".openModal", function () {
             var idconsultas_horario = document.activeElement.dataset.idconsultas_horario;
-            var fecha = document.activeElement.dataset.fecha;        
+            var fecha = document.activeElement.dataset.fecha;  
+            $(".modal-body #fecha").val( fecha );
+            $(".modal-body #idconsultas_horario").val( idconsultas_horario );
+        });
+/*         $('#accionBoton').submit(function(e){
+            e.preventDefault();
+            alert(e)
             $.ajax({
                 url:"controller/inscribir_consulta.php",
                 type:"POST",
                 datatype: "text",
-                data: {idconsultas_horario:idconsultas_horario, fecha:fecha}, 
+                data: {
+                    idconsultas_horario:idconsultas_horario,
+                    fecha:fecha}, 
                 success:function(data){
                     if(data == 0){
                         Swal.fire({
@@ -188,7 +268,8 @@
                             title:'Error en la base de datos.',
                         });
                     } else{
-                    /*  HAY QUE HACER QUE ENVIE MAIL AL ALUMNO      
+                        alert(idconsultas_horario, fecha)
+                     HAY QUE HACER QUE ENVIE MAIL AL ALUMNO      
                         $.ajax({
                             type: "POST",
                             url: "../controller/enviar_mail.php",
@@ -198,12 +279,12 @@
                                 alert(data)
                                 
                             }
-                        }); */
+                        }); 
                         window.location.href = "index.php";
                     }
                 }    
             });
-        });
+        }); */
     </script>
 
 </body>

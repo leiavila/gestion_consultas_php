@@ -32,14 +32,16 @@
                 <span class="nav-link-text">Listado de consultas</span>
               </a>
             </li>
-      
-            <li class="nav-item">
-              <a class="nav-link" href="../vistas/cancelacion_consultas.php">
-                <span class="nav-link-text">Cancelación de consultas</span>
-              </a>
-            </li>
-            <?php 
+            <?php
             session_start();
+            if (isset($_SESSION["s_profesor"])) {
+
+            echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="../vistas/cancelacion_consultas.php">';
+                echo '<span class="nav-link-text">Cancelación de consultas</span>';
+              echo '</a>';
+            echo '</li>';
+            }
             if (!isset($_SESSION["s_profesor"])) {
               echo '<li class="nav-item">';
               echo '<a class="nav-link" href="../upload-excel/uploadexc.php">';

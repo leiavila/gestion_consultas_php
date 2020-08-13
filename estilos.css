@@ -1686,6 +1686,11 @@ pre code {
 .table-responsive > .table-bordered {
     border: 0;
 }
+.correcto {
+    font-size: 20px;
+    background: lightgreen;
+}
+
 .form-control {
     font-size: .875rem;
     font-weight: 400;

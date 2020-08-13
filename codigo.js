@@ -29,7 +29,7 @@ $('#formLogin').submit(function(e){
  });
 
  $('#accionBoton').submit(function(e){
-    
+    alert(e)
     e.preventDefault();
     var fila = document.activeElement.dataset.fila;    
     var accion = document.activeElement.dataset.accion; 
@@ -39,13 +39,14 @@ $('#formLogin').submit(function(e){
         datatype: "text",
         data: {fila:fila, accion:accion}, 
         success:function(data){
+            alert(data)
             if(data == 0){
                 Swal.fire({
                     type:'error',
                     title:'Error en la base de datos.',
                 });
             } else{
-                $.ajax({
+/*                 $.ajax({
                     type: "POST",
                     url: "../controller/enviar_mail.php",
                     data: {fila:fila, accion:accion}, 
@@ -54,7 +55,7 @@ $('#formLogin').submit(function(e){
                         alert(data)
                         
                     }
-                });
+                }); */
                 window.location.href = "listado_consultas.php";
             }
         }    

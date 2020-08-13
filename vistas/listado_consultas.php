@@ -64,7 +64,7 @@
                   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                   if ($resultado->rowCount() > 0) {
-                    echo ' <form class="form" action="" id="accionBoton" method="POST">';
+                    echo '<form id="accionBoton" class="form" action="" method="POST">';
                     foreach($data as $fila) {
                       $date = strtotime($fila["fecha"]);
                       $new_date = date('d-m-Y', $date);
@@ -76,7 +76,7 @@
                         echo '
                         <td>
                             <input type="submit" id="aceptar' . $fila["id"] . '1" name="aceptar' . $fila["id"] . '1" data-accion=1 data-fila=' . $fila["id"] . ' class="btn btn-success btn-sm" value="ACEPTAR" />
-                            <input type="submit" id="aceptar' . $fila["id"] . '2" name="rechazar' . $fila["id"] . '2" data-accion=2 data-fila=' . $fila["id"] . ' class="btn btn-danger btn-sm" value="RECHAZAR" />
+                            <input type="submit" id="rechazar' . $fila["id"] . '2" name="rechazar' . $fila["id"] . '2" data-accion=2 data-fila=' . $fila["id"] . ' class="btn btn-danger btn-sm" value="RECHAZAR" />
                         </td>';
                       echo '</tr>';
                     }
@@ -114,13 +114,14 @@ echo '</div>';
   </div>
 
   
-  
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="../codigo.js"></script>
+
 
 </body>
 
