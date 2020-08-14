@@ -55,7 +55,7 @@
 
                                 if ($resultado->rowCount() > 0) {
                                     echo ' <select name="materia"  class="form-control" >';
-                                    echo '<option value=-1> </option>';
+                                    echo '<option value=-1>Seleccione...</option>';
                                     foreach ($data as $fila) {
                                         echo ' <option value="' . $fila["idmateria"] . '">' . $fila["nombre_materia"] . '</option>';
                                     }
@@ -74,7 +74,7 @@
 
                                 if ($resultado->rowCount() > 0) {
                                     echo ' <select name="profesor" class="form-control">';
-                                    echo '<option value=-1> </option>';
+                                    echo '<option value=-1>Seleccione...</option>';
                                     foreach ($data as $fila) {
                                         echo ' <option value="' . $fila["idprofesor"] . '">' . $fila["nombre_profesor"] . '</option>';
                                     }
