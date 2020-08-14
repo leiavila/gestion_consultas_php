@@ -32,7 +32,7 @@
             </div>
 
             <div class="card-body">
-              <form class="filter" id="buscar" action="" method="GET">
+              <form class="filter" id="buscar2" action="" method="GET">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-4">
@@ -57,7 +57,7 @@
                     <div class="col-12 col-sm-12 col-lg-2 p-2">
                       <div class="form-group">
                         <br>
-                        <input value="Buscar" type="submit" class="btn btn-outline-primary" id="buscar" name="buscar">
+                        <input value="Buscar" type="submit" class="btn btn-outline-primary" id="buscar2" name="buscar2">
                       </div>
                     </div>
                   </div>
@@ -68,7 +68,7 @@
               if (isset($_GET['retorno']) && $_GET['retorno'] == 1) {
                 echo '<div class="correcto">Consultas canceladas correctamente.</div>';
               }
-              if (isset($_GET['buscar'])) {
+              if (isset($_GET['buscar2'])) {
                 $idprofesor = $_SESSION["s_profesor"];
                 $fecha_desde = $_GET['fecha_desde'];
                 $fecha_hasta = $_GET['fecha_hasta'];

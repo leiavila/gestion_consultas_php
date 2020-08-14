@@ -26,7 +26,7 @@
                 <div class="header-body">
 
                     <div style="padding: 16px" class="col-lg-6 col-7">
-                        <h2 class="text-white">Listado de consultas</h6>
+                        <h2 class="text-white">Listado de consultas</h2>
                     </div>
                     <p style="color:white">En este apartado encontrarás los horarios de consultas disponibles.<br>
                         Se puede filtrar por profesor y por materia. Una vez que envíes la solicitud recordá revisar tu casilla de correo.</p>
@@ -188,7 +188,7 @@
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-legajo">Legajo</label>
-                                    <input type="integer" name="legajo" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
+                                    <input type="number" name="legajo" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
                                 </div>
                                 </div>
                             </div>
