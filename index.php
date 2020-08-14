@@ -41,7 +41,7 @@
                     <h3 class="mb-0">Filtros</h3>
                 </div>
                 <div class="card-body">
-                    <form class="filter" id="buscar" action="" method="GET">
+                    <form class="filter" id="buscar" method="GET">
                         <div class="row">
 
                             <div class="col-12 col-sm-12 col-lg-3 p-2">Materia
