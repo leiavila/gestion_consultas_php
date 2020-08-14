@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href="\..\estilos.css" type="text/css"> 
+    <link rel="stylesheet" href="/../estilos.css" type="text/css"> 
 </head>
 
 <body>
@@ -87,7 +87,7 @@
 
                             <div class="col-12 col-sm-12 col-lg-3 p-2">
                                 <br>
-                                <input value="Buscar" type="submit" class="btn btn-outline-primary" id="buscar" name="buscar">
+                                <input value="Buscar" type="submit" class="btn btn-outline-primary" id="buscar3" name="buscar">
                                 <input value="Borrar" type="button" class="btn btn-outline-danger" onclick="clearFilters();">
                             </div>
                         </div>
@@ -153,12 +153,8 @@
                                             echo '</tbody>';
                                            echo '</table>';
                                     }
-                                    
-
-                                    
-                                    
                                     ?>
-                             
+                                    
 
           
                     <div class="modal fade" id="ModalDatosAlumnos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
