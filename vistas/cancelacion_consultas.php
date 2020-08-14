@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- <link rel="stylesheet" href="\gestion_consultas_php\estilos.css" type="text/css"> -->
 </head>
 
 <body>

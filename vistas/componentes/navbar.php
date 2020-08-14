@@ -2,7 +2,7 @@
   if(!isset($_SESSION)) { 
       session_start(); 
   } 
-if( $_SESSION["s_usuario"] === null){
+if( !isset($_SESSION["s_usuario"])){
     header("Location: ../index.php");
 }
 

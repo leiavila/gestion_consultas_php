@@ -7,19 +7,20 @@
   <title>Gestor de consultas UTN</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <link rel="stylesheet" href="\bootstrap/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="..\estilos.css" type="text/css"> -->
 </head>
 
 <body>
 
   <?php include("componentes/sidebar.php") ?>
-  <?php include("../bd/conexion.php");  $objeto = new Conexion();
+  <?php include("../bd/conexion.php");
+    $objeto = new Conexion();
  $conexion = $objeto->Conectar(); ?>
 
 
   <div class="main-content" id="panel">
 
-    <?php include("componentes/navbar.php") ?>
+    <?php include("componentes/navbar.php") 
+    ?>
 
     <div class="header bg-primary pb-6">
       <div class="container-fluid">
@@ -143,6 +144,9 @@
 
     </div>
   </div>
+  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../assets/js/argon.js?v=1.2.0"></script>
 
 </body>
 
