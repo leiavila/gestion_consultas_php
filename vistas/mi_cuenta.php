@@ -51,13 +51,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Nombre</label>
-                        <input type="text" id="input-first-name" class="form-control" placeholder="First name" value="Lucky">
+                        <input type="text" id="input-first-name" class="form-control" placeholder="Nombre">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Apellido</label>
-                        <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value="Jesse">
+                        <input type="text" id="input-last-name" class="form-control" placeholder="Apellido">
                       </div>
                     </div>
                   </div>

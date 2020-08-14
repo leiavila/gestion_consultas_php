@@ -199,13 +199,13 @@
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-first-name">Nombre</label>
-                                    <input type="text"  name="nombre" id="input-first-name" class="form-control" placeholder="First name" value="">
+                                    <input type="text"  name="nombre" id="input-first-name" class="form-control" placeholder="Ingrese su nombre" >
                                 </div>
                                 </div>
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-last-name">Apellido</label>
-                                    <input type="text"  name="apellido" id="input-last-name" class="form-control" placeholder="Last name" value="">
+                                    <input type="text"  name="apellido" id="input-last-name" class="form-control" placeholder="Ingrese su apellido">
                                 </div>
                                 </div>
                             </div>

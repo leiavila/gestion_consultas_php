@@ -60,6 +60,12 @@
 
             ?>
             <li class="nav-item">
+              <a class="nav-link" href="../vistas/faq.php">
+                <span class="nav-link-text">Preguntas Frecuentes</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="../bd/logout.php">
                 <span class="nav-link-text">Cerrar sesión</span>
               </a>

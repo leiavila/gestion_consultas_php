@@ -14,13 +14,13 @@
 
   <?php include("componentes/sidebar.php") ?>
   <?php include("../bd/conexion.php");
-    $objeto = new Conexion();
- $conexion = $objeto->Conectar(); ?>
+  $objeto = new Conexion();
+  $conexion = $objeto->Conectar(); ?>
 
 
   <div class="main-content" id="panel">
 
-    <?php include("componentes/navbar.php") 
+    <?php include("componentes/navbar.php")
     ?>
 
     <div class="header bg-primary pb-6">
@@ -81,8 +81,6 @@
                 <tbody>
                   <?php
                   $Cant_por_Pag = 5;
-                  // $objeto = new Conexion();
-                  // $conexion = $objeto->Conectar();
                   $resultado = $conexion->prepare('SELECT * FROM proximas_consultas;');
                   $resultado->execute();
                   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : null;
