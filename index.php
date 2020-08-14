@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- <link rel="stylesheet" href="\..\estilos.css" type="text/css"> -->
+    <link rel="stylesheet" href="\..\estilos.css" type="text/css"> 
 </head>
 
 <body>
     <?php include("vistas/componentes/navbar_alumno.php") ?>
 
     <?php include("bd/conexion.php") ?>
-    <!-- Main content -->
+
     <div class="main-content" id="panel">
 
-        <!-- Header -->
+    
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
                 <div class="header-body">
@@ -160,7 +160,7 @@
                                     ?>
                              
 
-                    <!-- Modal -->
+          
                     <div class="modal fade" id="ModalDatosAlumnos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -251,40 +251,6 @@
             $(".modal-body #fecha").val( fecha );
             $(".modal-body #idconsultas_horario").val( idconsultas_horario );
         });
-/*         $('#accionBoton').submit(function(e){
-            e.preventDefault();
-            alert(e)
-            $.ajax({
-                url:"controller/inscribir_consulta.php",
-                type:"POST",
-                datatype: "text",
-                data: {
-                    idconsultas_horario:idconsultas_horario,
-                    fecha:fecha}, 
-                success:function(data){
-                    if(data == 0){
-                        Swal.fire({
-                            type:'error',
-                            title:'Error en la base de datos.',
-                        });
-                    } else{
-                        alert(idconsultas_horario, fecha)
-                     HAY QUE HACER QUE ENVIE MAIL AL ALUMNO      
-                        $.ajax({
-                            type: "POST",
-                            url: "../controller/enviar_mail.php",
-                            data: {fila:fila, accion:accion}, 
-                            async: true,
-                            success: function (data) {
-                                alert(data)
-                                
-                            }
-                        }); 
-                        window.location.href = "index.php";
-                    }
-                }    
-            });
-        }); */
     </script>
 
 </body>
