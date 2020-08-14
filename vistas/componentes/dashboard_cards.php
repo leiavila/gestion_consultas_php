@@ -50,7 +50,7 @@ switch ($cardnum) {
         left join usuarios u 
             on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
         where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like 'CANCELADA';
+        and upper(c.estado) like 'Rechazado';
         commit;
         ";
 
@@ -82,27 +82,6 @@ switch ($cardnum) {
        
   
     break;
-    // case 5:
-    //     $classcss = "bg-gradient-info";
-    //     $title = "Alumnos Promedio";
-    //     $letter = "AP";
-    //     $sql = "
-    //     /*
-    //                 alumnos promedios 
-    //     */;
-    //     create temporary table if not exists Tmp (idconsultas_horario int, idtiempo int , cant_alumnos int);
-    //     insert into Tmp
-    //     select c.idconsultas_horario, c.idtiempo ,count(idalumno) cant_alumnos
-    //     from consultas c 
-    //     join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
-    //     join profesor p 
-    //             on ch.idprofesor=p.idprofesor
-    //     where nombre_profesor=case when '$profesor' is null then nombre_profesor else '$profesor' end
-    //     group by c.idconsultas_horario, c.idtiempo ;
-    //     select avg(cant_alumnos)
-    //     from Tmp;
-    //     ";
-    //     break;
   } 
 ?>
 
