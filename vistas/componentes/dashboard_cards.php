@@ -17,16 +17,14 @@ switch ($cardnum) {
                 join consultas_horario ch 
                     on c.idconsultas_horario=ch.idconsultas_horario 
                 left join usuarios u 
-                    on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
-        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like'%PENDIENTE%';   
+                    on ch.idprofesor=u.idprofesor and u.usuario= ?
+        where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
+        and upper(c.estado) like '%PENDIENTE%';   
        ";
             $resultado = $conexion->prepare($sql);
-            $resultado->execute();
+            $resultado->execute([$nombre_usuario, $nombre_usuario]);
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            if ($resultado->rowCount() > 0) {
-                print_r($data) ;
-            } else {
+            if ($resultado->rowCount() == 0) {
                 echo '<label class="text-white">ERROR</label>';
             }
 
@@ -38,15 +36,17 @@ switch ($cardnum) {
         $sql = " select count(*) from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         join profesor p on ch.idprofesor=p.idprofesor
-        join tiempo t on t.idtiempo=c.idtiempo
         left join usuarios u 
-            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
-        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
-        and t.fecha=current_date();
+            on ch.idprofesor=u.idprofesor and u.usuario=?
+        where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
+        and c.fecha=current_date();
         ";
         $resultado = $conexion->prepare($sql);
-        $resultado->execute();
+        $resultado->execute([$nombre_usuario, $nombre_usuario]);
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        if ($resultado->rowCount() == 0) {
+            echo '<label class="text-white">ERROR</label>';
+        }
         break;
 
     case 3:
@@ -58,21 +58,18 @@ switch ($cardnum) {
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         left join usuarios u 
-            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
-        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
+            on ch.idprofesor=u.idprofesor and u.usuario= ?
+        where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like 'CANCELADA';
         commit;
         ";
 
         // ERROR
         $resultado = $conexion->prepare($sql);
-        $resultado->execute();
+        $resultado->execute([$nombre_usuario, $nombre_usuario]);
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        if ($resultado->rowCount() > 0) {
-            print_r($data) ;
-        } else {
+        if ($resultado->rowCount() == 0) {
             echo '<label class="text-white">ERROR</label>';
-
         }
         break;
     case 4: 
@@ -88,20 +85,17 @@ switch ($cardnum) {
         from consultas c 
         join consultas_horario ch on c.idconsultas_horario=ch.idconsultas_horario
         left join usuarios u 
-            on ch.idprofesor=u.idprofesor and u.usuario= '$nombre_usuario'
-        where ch.idprofesor= case when '$nombre_usuario' ='admin' then ch.idprofesor else u.idprofesor end 
+            on ch.idprofesor=u.idprofesor and u.usuario= ?
+        where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like '%ACEPTADA%';
         ";
 
         $resultado = $conexion->prepare($sql);
-        $resultado->execute();
+        $resultado->execute([$nombre_usuario, $nombre_usuario]);
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
        
-        if ($resultado->rowCount() > 0) {
-            print_r($data) ;
-        } else {
+        if ($resultado->rowCount() == 0) {
             echo '<label class="text-white">ERROR</label>';
-
         }
     break;
     // case 5:
@@ -136,9 +130,9 @@ switch ($cardnum) {
                     <h5 class="card-title text-uppercase text-muted mb-0"><?php echo $title ?></h5>
                     <span class="h2 font-weight-bold mb-0"><?php 
                     foreach ($data as $fila) {
-                                        echo $fila['count(*)'];
-                                    }
-                                    ?>
+                        echo $fila['count(*)'];
+                    }
+                    ?>
                 
                 </span>
                 </div>

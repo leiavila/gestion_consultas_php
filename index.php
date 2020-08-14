@@ -119,8 +119,8 @@
                                         echo '</thead>';
                                         echo '<tbody class="list">';
 
-                                        $resultado = $conexion->prepare('CALL filtro_consultas(' . $_GET['materia'] . ', ' . $_GET['profesor'] . ')');
-                                        $resultado->execute();
+                                        $resultado = $conexion->prepare('CALL filtro_consultas( ?, ? )');
+                                        $resultado->execute([$_GET['materia'], $_GET['profesor'] ]);
                                         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                         if ($resultado->rowCount() > 0) {
