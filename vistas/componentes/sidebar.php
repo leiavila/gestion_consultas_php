@@ -10,7 +10,7 @@
 
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div id="mySidenav" class="scrollbar-inner">
-      <!-- Brand -->
+
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
           <img src="..\..\img\LOGO.png" class="navbar-brand-img" alt="...">
@@ -19,7 +19,7 @@
       <div class="navbar-inner">
        
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <!-- ver como pasar parametro para que se ponga la clase ACTIVE -->
+     
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="../vistas/dashboard.php">

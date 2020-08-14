@@ -44,7 +44,11 @@
                     <form class="filter" id="buscar" method="GET">
                         <div class="row">
 
-                            <div class="col-12 col-sm-12 col-lg-3 p-2">Materia
+                            <div class="col-12 col-sm-12 col-lg-3 p-2">
+                            
+                            
+                            <label for="materia">Materia</label>
+                            
 
                                 <?php
                                 $objeto = new Conexion();
@@ -54,7 +58,7 @@
                                 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 if ($resultado->rowCount() > 0) {
-                                    echo ' <select name="materia"  class="form-control" >';
+                                    echo '<select name="materia" id="materia"  class="form-control" >';
                                     echo '<option value=-1>Seleccione...</option>';
                                     foreach ($data as $fila) {
                                         echo ' <option value="' . $fila["idmateria"] . '">' . $fila["nombre_materia"] . '</option>';
@@ -66,14 +70,17 @@
                                 ?>
 
                             </div>
-                            <div class="col-12 col-sm-12 col-lg-3 p-2">Profesor
+                            <div class="col-12 col-sm-12 col-lg-3 p-2">
+
+                            <label for="profesor">Profesor</label>
+                            
                                 <?php
                                 $resultado = $conexion->prepare('SELECT * FROM profesor;');
                                 $resultado->execute();
                                 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 if ($resultado->rowCount() > 0) {
-                                    echo ' <select name="profesor" class="form-control">';
+                                    echo ' <select id="profesor" name="profesor" class="form-control">';
                                     echo '<option value=-1>Seleccione...</option>';
                                     foreach ($data as $fila) {
                                         echo ' <option value="' . $fila["idprofesor"] . '">' . $fila["nombre_profesor"] . '</option>';
