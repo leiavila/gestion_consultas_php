@@ -46,8 +46,18 @@
                 </div>
 
                 <div>
-                    <label><b>pregunta</b></label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto velit alias doloremque cupiditate temporibus debitis amet ratione adipisci quasi magnam quam aspernatur, quisquam officia quaerat dolorum sequi et doloribus sit?</p>
+                    <label><b>¿Cómo acepto o rechazo una consulta?</b></label>
+                    <p>Para aceptar una consulta seleccionar de la barra izquierda el sector “Listado de consulta” visualizar una consulta, en la parte derecha de la fila se encuentran dos botones: </p>
+                    <ul>
+                        <li>Aceptar</li>
+                        <li>Rechazar</li>
+                    </ul>
+                    <p> Al seleccionar cada uno acepta o rechaza, respectivamente, una consulta pedida por un alimno </p>
+                </div>
+
+                <div>
+                    <label><b>¿que pasa al aceptar o rechazar una consulta?</b></label>
+                    <p> Al aceptar o rechazar una consulta, se procede a enviar un mail al alumno que la solicito, informandole del estado de la consulta</p>
                 </div>
 
 
