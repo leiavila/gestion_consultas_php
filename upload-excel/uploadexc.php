@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <head>
@@ -6,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Gestor de consultas UTN</title>
     <link rel="stylesheet" href="\bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -31,7 +35,7 @@
                                         <form action="?" method="post" enctype="multipart/form-data">
                                             <label>Seleccione el archivo a subir</label>
                                             <p><input class="form-control" placeholder="Seleccione el archivo a subir" type="file" name="file" /> </p>
-                                            <p><input type="submit" name="upload" class="btn btn-primary btn-block" value="ACTUALIZAR HORAS DE CONSULTA" /> </p>
+                                            <p><input type="submit" name="upload" class="btn btn-primary btn-block" onclick="swal()" value="ACTUALIZAR HORAS DE CONSULTA" /> </p>
                                         </form>
                                     </div>
                                 </div>
@@ -110,6 +114,10 @@
             ";
             $resultado = $conexion->prepare($sql);
             $resultado->execute();
+
+            echo "<script> showModal(); </script>";
+       
+            
         }
     }
 
@@ -124,5 +132,41 @@
     ?>
 
 </body>
+
+
+<script LANGUAGE="javascript">
+  function showModal() {
+    swal({
+      title: 'Excel subido!',
+      text: "¡Las horas fueron actualizadas!",
+      type: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK!'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "dashboard.php";
+      }
+    })
+  }
+</script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
+
+
+<script>
+
+    function finalizado(){
+        Swal.fire(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+)
+    }
+
+</script>
+<script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 </html>
