@@ -9,13 +9,12 @@ $fila = (isset($_POST['fila'])) ? $_POST['fila'] : '';
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : '';
 
 $resultado = $conexion->prepare('
-    SELECT a.correo, a.nombre, ch.dia, ch.hora_ini, ch.hora_fin, m.nombre_materia, p.nombre_profesor, t.fecha
+    SELECT a.correo, a.nombre, ch.dia, ch.hora_ini, ch.hora_fin, m.nombre_materia, p.nombre_profesor, c.fecha
     FROM consultas c 
     INNER JOIN alumno a on a.idalumno = c.idalumno 
     INNER JOIN consultas_horario ch on ch.idconsultas_horario=c.idconsultas_horario
     INNER JOIN materia m on m.idmateria=ch.idmateria
     INNER JOIN profesor p on p.idprofesor=ch.idprofesor
-    INNER JOIN tiempo t on t.idtiempo = c.idtiempo
     WHERE c.idconsultas = ?;
 ');
 $retorno = $resultado->execute([$fila]);

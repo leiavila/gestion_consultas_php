@@ -7,7 +7,6 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 $idconsultas_horario = (isset($_POST['idconsultas_horario'])) ? $_POST['idconsultas_horario'] : '';
-/* $fecha =(isset($_POST['fecha_bloqueo'])) ? $_POST['fecha_bloqueo'] : '' ; */
 $motivo =(isset($_POST['motivo'])) ? $_POST['motivo'] : '' ; # Hay que sacar de algun lado este dato. No seria el mail?
 $sql = "START TRANSACTION;";
 $params = array();

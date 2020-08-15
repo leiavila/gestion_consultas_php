@@ -183,7 +183,7 @@
                                 <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-email">Dirección de correo</label>
-                                    <input type="email" id="input-email" name="correo" class="form-control" placeholder="Ingrese su email">
+                                    <input required type="email" id="input-email" name="correo" class="form-control" placeholder="Ingrese su email">
                                 </div>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-legajo">Legajo</label>
-                                    <input type="number" name="legajo" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
+                                    <input required type="number" name="legajo" id="input-legajo" class="form-control" placeholder="Ingrese Legajo">
                                 </div>
                                 </div>
                             </div>
@@ -199,13 +199,13 @@
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-first-name">Nombre</label>
-                                    <input type="text"  name="nombre" id="input-first-name" class="form-control" placeholder="Ingrese su nombre" >
+                                    <input required type="text"  name="nombre" id="input-first-name" class="form-control" placeholder="Ingrese su nombre" >
                                 </div>
                                 </div>
                                 <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-last-name">Apellido</label>
-                                    <input type="text"  name="apellido" id="input-last-name" class="form-control" placeholder="Ingrese su apellido">
+                                    <input required type="text"  name="apellido" id="input-last-name" class="form-control" placeholder="Ingrese su apellido">
                                 </div>
                                 </div>
                             </div>

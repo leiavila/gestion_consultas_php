@@ -90,9 +90,7 @@
                     $new_date = date('d-m-Y', $date);
                     echo ' <div class="form-check">';
                     echo '<input name="idconsultas_horario[]" class="form-check-input" type="checkbox" value="'. $fila["idconsultas_horario"] . '/' . $fila["fecha"] .'" id="' . $fila["idconsultas_horario"] . '">';
-                    echo '<label class="form-check-label" for="' . $fila["idconsultas_horario"] . '">'. $fila["idconsultas_horario"] . ' - ' . $new_date . ' - ' . $fila["hora_ini"] . ' ' . $fila["nombre_materia"] . '</label>';
-                    /* echo '<input type="hidden" name="fecha_bloqueo[]" class="form-control" value=' . $fila["fecha"] . '>'; */
-
+                    echo '<label class="form-check-label" for="' . $fila["idconsultas_horario"] . '">' . $new_date . ' - ' . $fila["hora_ini"] . ' ' . $fila["nombre_materia"] . '</label>';
                     echo '</div>';
                   }
                   echo '<div class="pl-lg-4">';
