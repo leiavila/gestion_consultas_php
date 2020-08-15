@@ -88,7 +88,12 @@
             $finMin = $objPHPExcel->getActiveSheet()->getCell('F' . $i)->getCalculatedValue();
             $dia = $objPHPExcel->getActiveSheet()->getCell('G' . $i)->getCalculatedValue();
 
-           
+           if($inicioMin == 0){
+                $inicioMin = "00";
+           }
+           if($finMin == 0){
+            $finMin = "00";
+            }
             $sql = "
             start transaction;
             drop temporary table if exists TMP_consultas;

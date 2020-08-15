@@ -56,8 +56,8 @@
                 </div>
 
                 <div>
-                    <label><b>¿que pasa al aceptar o rechazar una consulta?</b></label>
-                    <p> Al aceptar o rechazar una consulta, se procede a enviar un mail al alumno que la solicito, informandole del estado de la consulta</p>
+                    <label><b>¿Qué pasa al aceptar o rechazar una consulta?</b></label>
+                    <p> Al aceptar o rechazar una consulta, se procede a enviar un mail al alumno que la solicito, informándole del estado de la consulta</p>
                 </div>
 
 
