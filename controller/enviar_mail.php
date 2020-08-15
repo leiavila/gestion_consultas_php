@@ -23,6 +23,10 @@ $verbo = $accion==1? "CONFIRMO": "RECHAZO";
 if ( $resultado->rowCount() == 1 ) {
 $destinatario = $data->correo;
 $asunto = "Estado de consulta";
+$date = strtotime($data->fecha);
+
+$new_date = date('d-m-Y', $date);
+
 $cuerpo = '
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +37,7 @@ $cuerpo = '
       <h1 style="font-weight:400;font-size:55px;text-align:center">UTN Facultad Regional Rosario<br>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2-ETqV0Ssqn4CHUvui3Gb0UnFp4KVxwDTgw&usqp=CAU" alt="Logo utn"></h1>
       
-      <p style="font-size:25px;text-align:center">Hola <b>' . $data->nombre . '!</b>. Mediante este mail notificamos que se ' . $verbo .  ' tu consulta para la materia ' . $data->nombre_materia . ' para el dia' . $data->dia . ' ' . $data->fecha . ' entre las '. $data->hora_ini . ' y las '. $data->hora_fin . ' con '. $data->nombre_profesor . '.</p>
+      <p style="font-size:25px;text-align:center">Hola <b>' . $data->nombre . '!</b>. Mediante este mail notificamos que se ' . $verbo .  ' tu consulta para la materia ' . $data->nombre_materia . ' para el dia ' . $data->dia . ' ' . $new_date . ' entre las '. $data->hora_ini . ' y las '. $data->hora_fin . ' con '. $data->nombre_profesor . '.</p>
       
   </body>
 </html>

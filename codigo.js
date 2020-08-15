@@ -39,7 +39,6 @@ $('#formLogin').submit(function(e){
         datatype: "text",
         data: {fila:fila, accion:accion}, 
         success:function(data){
-            alert(data)
             if(data == 0){
                 Swal.fire({
                     type:'error',
@@ -52,8 +51,7 @@ $('#formLogin').submit(function(e){
                     data: {fila:fila, accion:accion}, 
                     async: true,
                     success: function (data) {
-                        alert(data)
-                        
+                         
                     }
                 }); 
                 window.location.href = "listado_consultas.php";
