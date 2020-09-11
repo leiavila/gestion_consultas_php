@@ -29,7 +29,6 @@ $('#formLogin').submit(function(e){
  });
 
  $('#accionBoton').submit(function(e){
-    alert(e)
     e.preventDefault();
     var fila = document.activeElement.dataset.fila;    
     var accion = document.activeElement.dataset.accion; 

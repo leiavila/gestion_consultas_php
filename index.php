@@ -19,8 +19,6 @@
     <?php include("bd/conexion.php") ?>
 
     <div class="main-content" id="panel">
-
-    
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
                 <div class="header-body">
@@ -48,17 +46,20 @@
                             
                             
                             <label for="materia">Materia</label>
-                            
-
                                 <?php
                                 $objeto = new Conexion();
                                 $conexion = $objeto->Conectar();
-                                $resultado = $conexion->prepare('SELECT * FROM materia;');
+                                $sql = 'SELECT DISTINCT m.idmateria, m.nombre_materia 
+                                        FROM consultas_horario ch 
+                                        INNER JOIN materia m ON ch.idmateria = m.idmateria ';
+
+                                $resultado = $conexion->prepare($sql);
                                 $resultado->execute();
+                                
                                 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 if ($resultado->rowCount() > 0) {
-                                    echo '<select name="materia" id="materia"  class="form-control" >';
+                                    echo '<select onchange="filtrarPorMateria(' . !isset($_GET['id_profesor_filtro']) . ')" name="materia" id="materia"  class="form-control" >';
                                     echo '<option value=-1>Seleccione...</option>';
                                     foreach ($data as $fila) {
                                         echo ' <option value="' . $fila["idmateria"] . '">' . $fila["nombre_materia"] . '</option>';
@@ -75,8 +76,18 @@
                             <label for="profesor">Profesor</label>
                             
                                 <?php
-                                $resultado = $conexion->prepare('SELECT * FROM profesor;');
-                                $resultado->execute();
+                                $sql = 'SELECT DISTINCT p.idprofesor, p.nombre_profesor 
+                                    FROM consultas_horario ch 
+                                    RIGHT JOIN profesor p ON ch.idprofesor = p.idprofesor ';
+                                if(isset($_GET['id_materia_filtro']) ) { 
+                                    $sql .= 'WHERE ch.idmateria = ?';
+                                }
+                                $resultado = $conexion->prepare($sql);
+                                if(isset($_GET['id_materia_filtro']) ) { 
+                                    $resultado->execute([$_GET['id_materia_filtro']]);
+                                } else {
+                                    $resultado->execute();
+                                }
                                 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 if ($resultado->rowCount() > 0) {
@@ -95,7 +106,7 @@
                             <div class="col-12 col-sm-12 col-lg-3 p-2">
                                 <br>
                                 <input value="Buscar" type="submit" class="btn btn-outline-primary" id="buscar3" name="buscar">
-                                <input value="Borrar" type="button" class="btn btn-outline-danger" onclick="clearFilters();">
+                                <input value="Borrar" type="button" class="btn btn-outline-danger" onclick="resetFiltros();">
                             </div>
                         </div>
                     </form>
@@ -244,10 +255,17 @@
   
 
     <script>
-        function clearFilters() {
+        function resetFiltros() {
             document.getElementById('buscar').reset();
             document.location.href = "index.php";
+         }
+        function filtrarPorMateria( filtrar ) {
+            var id_materia = document.activeElement.value;
+            $.get('index.php', { id_materia_filtro: id_materia }, function(data){
+                $('#profesor').html($(data).find('#profesor').html());
+            });
         }
+
         $(document).on("click", ".openModal", function () {
             var idconsultas_horario = document.activeElement.dataset.idconsultas_horario;
             var fecha = document.activeElement.dataset.fecha;  
