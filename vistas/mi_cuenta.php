@@ -12,16 +12,28 @@
 
 <body>
 
- <?php include("componentes/sidebar.php") ?>
+ <?php
+
+ include("componentes/sidebar.php") ?>
 
   <div class="main-content" id="panel">
 
      <?php include("componentes/navbar.php") ?>
+     <?php include("../bd/conexion.php");
+  $objeto = new Conexion();
+  $conexion = $objeto->Conectar(); ?>
 
 <br>
 <br>
 <br>
 <br>
+
+<?php 
+$resultado = $conexion->prepare('SELECT * FROM profesor WHERE idprofesor = ?;');
+$resultado->execute([$_SESSION["s_profesor"]]);
+$data = $resultado->fetch(PDO::FETCH_ASSOC);
+
+?>
   
     <div class="container-fluid mt--6">
       <div class="row">
@@ -36,14 +48,14 @@
               </div>
             </div>
             <div class="card-body">
-              <form>
+              <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
                 <h6 class="heading-small text-muted mb-4">Informacion Usuario</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Dirección de correo</label>
-                        <input type="email" id="input-email" class="form-control" placeholder="Ingrese su email">
+                        <input name="correo" type="email" id="input-email" class="form-control" placeholder="Ingrese su email" value="<?php echo $data["correo"] ?>">
                       </div>
                     </div>
                   </div>
@@ -51,13 +63,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Nombre</label>
-                        <input type="text" id="input-first-name" class="form-control" placeholder="Nombre">
+                        <input name="nombre" type="text" id="input-first-name" class="form-control" placeholder="Nombre" value="<?php echo explode(", ", $data["nombre_profesor"])[1] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Apellido</label>
-                        <input type="text" id="input-last-name" class="form-control" placeholder="Apellido">
+                        <input name="apellido" type="text" id="input-last-name" class="form-control" placeholder="Apellido" value="<?php echo explode(", ", $data["nombre_profesor"])[0] ?>">
                       </div>
                     </div>
                   </div>
@@ -67,9 +79,27 @@
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Observaciones</label>
-                    <textarea rows="4" class="form-control" placeholder="Ingrese observaciones"></textarea>
+                    <textarea name="observaciones" rows="4" class="form-control" placeholder="Ingrese observaciones"><?php echo $data["observaciones"] ?></textarea>
                   </div>
                 </div>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                  <input value="Guardar" type="submit" class="btn btn-outline-primary" id="guardar" name="guardar">
+                  </div>
+                </div>
+                <?php 
+                    if(isset($_POST['guardar']) ) {
+                      $nombre_profesor = $_POST['apellido'] . ", " . $_POST['nombre'];
+                      $resultado = $conexion->prepare("
+                          UPDATE profesor p 
+                          SET p.nombre_profesor = ?, p.observaciones = ?, p.correo = ? 
+                          WHERE p.idprofesor = ?");
+                      $retorno = $resultado->execute([$nombre_profesor, $_POST['observaciones'], $_POST['correo'], $_SESSION['s_profesor']]);
+                      if ($retorno) {
+                        echo '<div class="correcto">Datos guardados correctamente.</div>';
+                      }
+                    }
+                ?>
               </form>
             </div>
           </div>

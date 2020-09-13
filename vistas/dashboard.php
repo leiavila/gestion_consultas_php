@@ -81,8 +81,8 @@
                 <tbody>
                   <?php
                   $Cant_por_Pag = 5;
-                  $resultado = $conexion->prepare('SELECT * FROM proximas_consultas;');
-                  $resultado->execute();
+                  $resultado = $conexion->prepare('CALL proximas_consultas(?, 0, 100000);');
+                  $resultado->execute([$_SESSION["s_profesor"]]);
                   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : null;
                   if (!$pagina) {
                     $inicio = 0;
@@ -92,8 +92,8 @@
                   }
                   $total_registros = $resultado->rowCount();
                   $total_paginas = ceil($total_registros / $Cant_por_Pag);
-                  $resultado = $conexion->prepare('SELECT * FROM proximas_consultas LIMIT ' . $inicio . ',' . $Cant_por_Pag . ';');
-                  $resultado->execute();
+                  $resultado = $conexion->prepare('CALL proximas_consultas(?, ?, ?);');
+                  $resultado->execute([$_SESSION["s_profesor"], $inicio, $Cant_por_Pag]);
                   $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                   if ($resultado->rowCount() > 0) {
@@ -104,10 +104,10 @@
                         echo '<td>' . $fila["nombre_profesor"] . '</td>';
                       }
 
-                      $date = strtotime($fila["fecha"]);
+                      $date = strtotime($fila["fecha_gen"]);
                       $new_date = date('d-m-Y', $date);
                       echo '<td>' .   $new_date . '</td>';
-                      echo '<td>' . $fila["hora_ini_fin"] . '</td>';
+                      echo '<td>' . $fila["hora_ini"] . '</td>';
                       echo '<td>' . $fila["cantidad_alumnos"] . '</td>';
                       echo '</tr>';
                     }
