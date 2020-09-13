@@ -112,7 +112,9 @@ echo '</div>';
         </div>
       </div>
     </div>
+    
   </div>
+
 
   
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -125,5 +127,8 @@ echo '</div>';
 
 
 </body>
+
+
+
 
 </html>
