@@ -9,7 +9,7 @@
         <h5 class="text-uppercase text-white">FACULTAD REGIONAL ROSARIO</h5>
         <h3>Universidad Tecnológica Nacional</h3>
         <h4>ZEBALLOS 1341 - S2000BQA - ROSARIO</h4>
-        <h4>Para comentarios, soporte o mejoras podés contactarnos clickeando <a href="mailto:consultas@gestionconsultasutn.com"><b>aqui</b></a>!</h4>
+        <h4>Para comentarios, soporte o mejoras podés contactarnos clickeando <a href="mailto:consultas@gestionconsultasutn.ddns.net"><b>aqui</b></a>!</h4>
         
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">

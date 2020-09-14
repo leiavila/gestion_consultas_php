@@ -58,3 +58,25 @@ $('#formLogin').submit(function(e){
         }    
     });
  });
+
+ $('#accionBotonAdmin').submit(function(e){
+    e.preventDefault();
+    var fila = document.activeElement.dataset.fila;    
+    var accion = document.activeElement.dataset.accion; 
+    $.ajax({
+        url:"../controller/accion_consulta_pendiente_admin.php",
+        type:"POST",
+        datatype: "text",
+        data: {fila:fila, accion:accion}, 
+        success:function(data){
+            if(data == 0){
+                Swal.fire({
+                    type:'error',
+                    title:'Error en la base de datos.',
+                });
+            } else{
+                window.location.href = "listado_consultas_admin.php";
+            }
+        }    
+    });
+ });

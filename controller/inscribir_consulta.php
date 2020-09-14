@@ -11,7 +11,7 @@ $idtiempo = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 $legajo =(isset($_POST['legajo'])) ? $_POST['legajo'] : '' ;
 $nombre =(isset($_POST['nombre'])) ? $_POST['nombre'] : '' ;
 $apellido =(isset($_POST['apellido'])) ? $_POST['apellido'] : '' ;
-$correo =(isset($_POST['correo'])) ? $_POST['correo'] : '' ; # Hay que sacar de algun lado este dato. No seria el mail?
+$correo =(isset($_POST['correo'])) ? $_POST['correo'] : '' ; 
 
 $resultado = $conexion->prepare(' 
 START TRANSACTION;
