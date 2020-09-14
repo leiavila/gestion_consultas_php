@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <ol>
-                        <li href=""><b>Listado de clases de consultas</b></li>
+                        <li ><a href="../.."><b>Listado de clases de consultas</b></a></li>
                         <li><a href="../login.html"><b>Ingreso al sistema</b></a></li>
                         <li><b>Area Profesores</b></li>
                         <ul>
