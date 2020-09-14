@@ -33,8 +33,8 @@ switch ($dia) {
 
 $sql = "START TRANSACTION;";
 $sql .= "INSERT INTO 
-            consultas_horario(dia, id_dia, idprofesor" . ($fecha? 'fecha_consulta,': ',') . "hora_ini, hora_fin, idmateria, estado ) 
-            VALUES( '". $nombre_dia . "'," . $dia . "," . $idprofesor . ",'" . ($fecha? $fecha. "',": "") . $hora_desde . "','" . $hora_hasta . "'," . $materia . ",'" . 'Pendiente' . "');";
+            consultas_horario(dia, id_dia, idprofesor," . ($fecha? 'fecha_consulta,': '') . "hora_ini, hora_fin, idmateria, estado ) 
+            VALUES( '". $nombre_dia . "'," . $dia . "," . $idprofesor . ",'" . ($fecha? $fecha. "','": "") . $hora_desde . "','" . $hora_hasta . "'," . $materia . ",'" . 'Pendiente' . "');";
 $sql .= "COMMIT;"; 
 
 $resultado = $conexion->prepare($sql);

@@ -218,14 +218,19 @@
     document.getElementById("error").innerHTML = '<b>Debe seleccionar un dia</b>';
     event.preventDefault();
   }  
-  if ( document.getElementById("hora_hasta").value  < document.getElementById("hora_desde").value) { 
+
+  if ( document.getElementById("fecha").value  == '' && !document.getElementById("se_repite").checked ) {
+    document.getElementById("error").innerHTML = '<b>Debe seleccionar una fecha</b>';
+    event.preventDefault();
+  }  
+
+  if ( document.getElementById("hora_hasta").value < document.getElementById("hora_desde").value) { 
     document.getElementById("error").innerHTML = '<b>La hora hasta no puede ser menor a la hora desde</b>d';
     event.preventDefault();
   }
 
 });
 fecha.min = new Date().toISOString().split("T")[0]
-  fecha.value = new Date().toISOString().split("T")[0]
 
 $('#se_repite').on('change', function() {
 
