@@ -13,7 +13,6 @@
 <body>
 
   <?php include("componentes/sidebar.php") ?>
-  <?php include_once("../bd/conexion.php") ?>
 
   <div class="main-content" id="panel">
     <?php include("componentes/navbar.php") ?>
