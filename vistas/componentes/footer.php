@@ -7,9 +7,9 @@
       <div class="col-md-6 mt-md-0 mt-3 text-white">
 
         <h1>Universidad Tecnológica Nacional</h1>
-        <label class="text-uppercase text-white">FACULTAD REGIONAL ROSARIO</label>
-        <label>ZEBALLOS 1341 - S2000BQA - ROSARIO</label>
-        <label>Para comentarios, soporte o mejoras podés contactarnos clickeando <a href="mailto:consultas@gestionconsultasutn.ddns.net"><b>aqui</b></a>!</label>
+        <p class="text-uppercase text-white">FACULTAD REGIONAL ROSARIO</p>
+        <p>ZEBALLOS 1341 - S2000BQA - ROSARIO</p>
+        <p>Para comentarios, soporte o mejoras podés contactarnos clickeando <a href="mailto:consultas@gestionconsultasutn.ddns.net"><b>aqui</b></a>!</p>
         
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">
