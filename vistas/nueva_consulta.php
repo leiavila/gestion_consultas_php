@@ -13,6 +13,7 @@
 <body>
 
   <?php include("componentes/sidebar.php") ?>
+  <?php include("../bd/conexion.php") ?>
 
   <div class="main-content" id="panel">
     <?php include("componentes/navbar.php") ?>
@@ -150,8 +151,6 @@
                           </thead>
                           <tbody class="list">
                             <?php
-                            $objeto = new Conexion();
-                            $conexion = $objeto->Conectar();
                             $resultado = $conexion->prepare('
                                 select distinct idprofesor, dia, fecha_consulta, CONCAT(hora_ini, " - ", hora_fin) "hora_ini_fin", materia.idmateria, materia.nombre_materia, estado 
                                 from consultas_horario 
