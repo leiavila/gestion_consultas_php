@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>UTN - Módulo gestión consultas</title>
 
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href="/../estilos.css" type="text/css">
+    <link rel="stylesheet" href="../estilos.css" type="text/css">
 </head>
 
 <body>
@@ -102,7 +102,6 @@
 
     </div>
 
-    <?php include("componentes/footer.php") ?>
     <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
@@ -112,6 +111,7 @@
     <script src="../assets/js/argon.js?v=1.2.0"></script>
 
 
+    <?php include("componentes/footer.php") ?>
 
 </body>
 
