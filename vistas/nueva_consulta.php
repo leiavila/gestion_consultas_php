@@ -210,7 +210,21 @@
   <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
   <script src="../assets/js/argon.js?v=1.2.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <script>
 
+$('#se_repite').on('change', function() {
+
+  fecha.min = new Date().toISOString().split("T")[0]
+  fecha.value = new Date().toISOString().split("T")[0]
+
+  if ( this.checked ) {
+    document.getElementById("selecciona_fecha").style.display = 'none'
+  } else {
+    document.getElementById("selecciona_fecha").style.display = 'block'
+  }
+
+});
+</script>
 </body>
 
 </html>
