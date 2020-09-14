@@ -67,6 +67,12 @@
 
               }
 
+               
+                echo '<div>';
+                    echo '<label><b>¿Cómo veo el mapa del sitio?</b></label>';
+                    echo '<p>El mapa del sitio se puede visualizar ingresando desde <b><a href="site_map.php">AQUI</a></b>';
+               
+
               ?>
 
             </div>
