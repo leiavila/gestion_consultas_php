@@ -23,6 +23,9 @@
           <li>
             <a class="text-white" href="https://www.frro.utn.edu.ar/contenido.php?cont=831&subc=55">Información sobre internos</a>
           </li>
+          <li>
+            <a class="text-white" href="/vistas/site_map.php">Mapa del sitio</a>
+          </li>
       
         </ul>
       </div>
