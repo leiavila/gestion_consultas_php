@@ -107,8 +107,9 @@
                     </div>
                   </div>
                 </div>
-
+                
               </form>
+              <div id="error"></div>
               <?php
               if (isset($_GET['retorno']) && $_GET['retorno'] == 1) {
                 echo '<div class="correcto">Solicitud enviada al administrador.</div>';
@@ -211,11 +212,24 @@
   <script src="../assets/js/argon.js?v=1.2.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   <script>
+    form = document.getElementById("nueva_consulta");
+    form.addEventListener('submit', function (event) {
+  // si el campo de correo electrónico es válido, dejamos que el formulario se envíe
+
+  if ( document.getElementById("dia").value  == -1) {
+    document.getElementById("error").innerHTML = '<b>Debe seleccionar un dia</b>';
+    event.preventDefault();
+  }  
+  if ( document.getElementById("hora_hasta").value  < document.getElementById("hora_desde").value) { 
+    document.getElementById("error").innerHTML = '<b>La hora hasta no puede ser menor a la hora desde</b>d';
+    event.preventDefault();
+  }
+
+});
+fecha.min = new Date().toISOString().split("T")[0]
+  fecha.value = new Date().toISOString().split("T")[0]
 
 $('#se_repite').on('change', function() {
-
-  fecha.min = new Date().toISOString().split("T")[0]
-  fecha.value = new Date().toISOString().split("T")[0]
 
   if ( this.checked ) {
     document.getElementById("selecciona_fecha").style.display = 'none'

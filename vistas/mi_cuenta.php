@@ -29,6 +29,7 @@
 <br>
 
 <?php 
+
 $resultado = $conexion->prepare('SELECT * FROM profesor WHERE idprofesor = ?;');
 $resultado->execute([$_SESSION["s_profesor"]]);
 $data = $resultado->fetch(PDO::FETCH_ASSOC);
@@ -91,12 +92,16 @@ $data = $resultado->fetch(PDO::FETCH_ASSOC);
                     if(isset($_POST['guardar']) ) {
                       $nombre_profesor = $_POST['apellido'] . ", " . $_POST['nombre'];
                       $resultado = $conexion->prepare("
+                      START TRANSACTION;
                           UPDATE profesor p 
                           SET p.nombre_profesor = ?, p.observaciones = ?, p.correo = ? 
-                          WHERE p.idprofesor = ?");
+                          WHERE p.idprofesor = ?;
+                      COMMIT;");
                       $retorno = $resultado->execute([$nombre_profesor, $_POST['observaciones'], $_POST['correo'], $_SESSION['s_profesor']]);
                       if ($retorno) {
+                        
                         echo '<div class="correcto">Datos guardados correctamente.</div>';
+
                       }
                     }
                 ?>

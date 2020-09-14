@@ -53,7 +53,6 @@ switch ($cardnum) {
             on ch.idprofesor=u.idprofesor and u.usuario= ?
         where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
         and upper(c.estado) like 'RECHAZADO' and c.fecha>=current_date();
-        commit;
         ";
 
 
