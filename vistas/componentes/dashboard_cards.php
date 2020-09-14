@@ -15,7 +15,7 @@ switch ($cardnum) {
                 left join usuarios u 
                     on ch.idprofesor=u.idprofesor and u.usuario= ?
         where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like '%PENDIENTE%';   
+        and upper(c.estado) like '%PENDIENTE%' and c.fecha>=current_date();   
        ";
             $resultado = $conexion->prepare($sql);
             $resultado->execute([$nombre_usuario, $nombre_usuario]);
@@ -52,7 +52,7 @@ switch ($cardnum) {
         left join usuarios u 
             on ch.idprofesor=u.idprofesor and u.usuario= ?
         where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like 'Rechazado';
+        and upper(c.estado) like 'RECHAZADO' and c.fecha>=current_date();
         commit;
         ";
 
@@ -74,7 +74,7 @@ switch ($cardnum) {
         left join usuarios u 
             on ch.idprofesor=u.idprofesor and u.usuario= ?
         where ch.idprofesor= case when ? ='admin' then ch.idprofesor else u.idprofesor end 
-        and upper(c.estado) like '%Confirmado%';
+        and upper(c.estado) like '%CONFIRMADO%' and c.fecha>=current_date();
         ";
 
         $resultado = $conexion->prepare($sql);
