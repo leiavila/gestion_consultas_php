@@ -45,46 +45,66 @@
                         <li><b>Area Profesores</b></li>
                         <ul>
 
-                            <li><a href="dashboard.php">Menú principal</a></li>
-                            <li><a href="listado_consultas.php">Listado de clases</a></li>
+                            
+                            
                             <?php
                             if (count($_SESSION) > 0) {
                                 if ($_SESSION["s_profesor"] && $_SESSION["s_profesor"] == 1) {
-                                    echo  ' <li ><a href="cancelacion_consultas.php">Cancelacion de consultas</a></li>';
-                                    echo  ' <li ><a href="mi_cuenta.php">Perfil</a></li>';
+                      
+                                    echo  '<li><a href="dashboard.php">Menú principal</a></li>';
+                                    echo  '<li><a href="listado_consultas.php">Listado de clases</a></li>';
+                                    echo  '<li ><a href="cancelacion_consultas.php">Cancelacion de consultas</a></li>';
+                                    echo  '<li ><a href="mi_cuenta.php">Perfil</a></li>';
+                                    echo  '<li><a href="faq.php">FAQ</a></li>';
+
+                                   
                                 } else {
-                                    echo  ' <li ><a href="../login.html">Cancelacion de consultas</a></li>';
-                                    echo  ' <li ><a href="../login.html">Perfil</a></li>';
+                        
+                                    echo  '<li class="disabled"><a href="#">Menú principal</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Listado de clases</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Cancelacion de consultas</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Perfil</a></li>';
+                                    echo  '<li class="disabled"><a href="#">FAQ</a></li>';
+
                                 }
                             } else {
-                                echo  ' <li ><a href="../login.html">Cancelacion de consultas</a></li>';
-                                echo  ' <li ><a href="../login.html">Perfil</a></li>';
+                  
+                                echo  '<li class="disabled"><a href="#">Menú principal</a></li>';
+                                echo  '<li class="disabled"><a href="#">Listado de clases</a></li>';
+                                echo  '<li class="disabled"><a href="#">Cancelacion de consultas</a></li>';
+                                echo  '<li class="disabled"><a href="#">Perfil</a></li>';
+                                echo  '<li class="disabled"><a href="#">FAQ</a></li>';
                             }
 
                             ?>
 
-
-                            <li><a href="faq.php">FAQ</a></li>
                         </ul>
 
                         <li><b>Area Admin</b></li>
                         <ul>
-                            <li><a href="dashboard.php">Menú principal</a></li>
-                            <li><a href="listado_consultas.php">Listado de clases</a></li>
+                            
                             <?php
                             if (count($_SESSION) > 0) {
-                                if ($_SESSION["s_profesor"] == 1) {
+                                if ($_SESSION["s_profesor"] != 1) {
+                                    echo  ' <li><a href="dashboard.php">Menú principal</a></li>';
+                                    echo  ' <li><a href="listado_consultas.php">Listado de clases</a></li>';
                                     echo  '<li ><a href="../login.html">Carga de horas</a></li>';
+                                    echo '<li><a href="faq.php">FAQ</a></li>';
                                 } else {
-                                    echo  '<li ><a href="../upload-excel/uploadexc.php">Carga de horas</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Menú principal</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Listado de clases</a></li>';
+                                    echo  '<li class="disabled"><a href="#">Carga de horas</a></li>';
+                                    echo  '<li class="disabled"><a href="#">FAQ</a></li>';
                                 }
                             } else {
-                                echo  '<li ><a href="../upload-excel/uploadexc.php">Carga de horas</a></li>';
+                                echo  '<li class="disabled"><a href="#">Menú principal</a></li>';
+                                echo  '<li class="disabled"><a href="#">Listado de clases</a></li>';
+                                echo  '<li class="disabled"><a href="#">Carga de horas</a></li>';
+                                echo  '<li class="disabled"><a href="#">FAQ</a></li>';
                             }
 
                             ?>
 
-                            <li><a href="faq.php">FAQ</a></li>
 
                         </ul>
 

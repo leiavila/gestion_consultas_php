@@ -11,6 +11,10 @@ a.text-white:focus {
 	--input-padding-x: 1.5rem;
 	--input-padding-y: 0.75rem;
 }
+.disabled {
+    pointer-events:none;
+    opacity:0.6;        
+}
 
 .login,
 .image {
