@@ -157,10 +157,10 @@
 
 
     // borro las variables porque si no cuando volves a entrar no se limpian
-    // $vars = array_keys(get_defined_vars());
-    // foreach ($vars as $var) {
-    //     unset(${"$var"});
-    // }
+    $vars = array_keys(get_defined_vars());
+    foreach ($vars as $var) {
+      unset(${"$var"});
+     }
 
 
     ?>
